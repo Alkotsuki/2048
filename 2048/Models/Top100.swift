@@ -12,6 +12,8 @@ struct score: Codable {
     var name: String
     var score: Int
     
+    static let defaults = UserDefaults.standard
+    
     static let DocumentsDirectory = FileManager.default.urls(for: .userDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("Scores").appendingPathExtension("plist")
     
