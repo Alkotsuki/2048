@@ -14,7 +14,12 @@ struct ViewControllers {
     static let top100 = "Top100TableViewController"
 }
 
+struct Tables {
+    static let top100CellIdentifier = "scoreCell"
+}
+
 struct Segues {
+    static let newGame       = "newGameSegue"
     static let showTop100    = "showTop100"
     static let unwindToStart = "unwindToStartScreen"
 }
