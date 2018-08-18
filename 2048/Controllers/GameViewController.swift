@@ -26,7 +26,6 @@ class GameViewController: UIViewController, RandomsFor2048 {
         }
     }
     
-//    var flagForCheck = [Int](repeating: 0, count: 16)
     var tileView = [Int:TileView]()
     var tileValue = [Int](repeating: 0, count: 16)
     
@@ -66,10 +65,12 @@ class GameViewController: UIViewController, RandomsFor2048 {
         
     }
     
+    //MARK: INSERT TILE
     func insertTile(at index:Int, with value:Int, animation type: TileAnimationType ) {
         
-        let newPosition = findPosition(for: index)
-        let tile = TileView(position: newPosition, width: 50, value: value)
+        let cell = cells[index]
+        let tileCoords = cell.superview!.convert(cell.frame.origin, to: gameboardView)
+        let tile = TileView(position: tileCoords, width: 50, value: value)
         
         gameboard.tiles[index] = value
         tileView[index] = tile
@@ -80,26 +81,10 @@ class GameViewController: UIViewController, RandomsFor2048 {
         
         animateTile(tile, with: type)
         
-//        if gameboard.isFull() && gameboard.isLost() {
-//            print("Game Over")
-//        }
-
     }
     
-    func findPosition(for index: Int) -> CGPoint {
-        let cell = cells[index]
-        return cell.superview!.convert(cell.frame.origin,
-                                       to: gameboardView)
-    }
-    
-    
-
     //MARK: REFRESH UI
     func refreshUI() {
-        
-        //        var index: Int
-        //        var tile: TileView
-        //        var counter = 0
         
         let upperBound = gameboard.dimension * gameboard.dimension
         var counter = 0
@@ -114,9 +99,6 @@ class GameViewController: UIViewController, RandomsFor2048 {
             }
             
             if gameboard.tiles[index] == 0 && tileValue[index] != 0 {
-                //                let tile = tileView[index]!
-                //                tile.removeFromSuperview()
-                
                 tileView[index]!.removeFromSuperview()
                 tileView.removeValue(forKey: index)
                 tileValue[index] = 0
@@ -154,7 +136,7 @@ class GameViewController: UIViewController, RandomsFor2048 {
     
     
     //MARK: OUTLETS
-
+    
     @IBOutlet weak var gameboardView: UIView!
     
     @IBOutlet weak var cell0:  UIView!
@@ -214,13 +196,14 @@ class GameViewController: UIViewController, RandomsFor2048 {
             }) { (finished) in
                 UIView.animate(withDuration: 0.08, animations: {
                     tile.layer.setAffineTransform(CGAffineTransform.identity)
+                    
                 })
             }
             
         case .merge:
             tile.layer.setAffineTransform(CGAffineTransform(scaleX: 1, y: 1))
-            UIView.animate(withDuration: 0.05, delay: 0.01, options: .curveEaseIn, animations: {
-                tile.layer.setAffineTransform(CGAffineTransform(scaleX: 2.3, y: 2.3))
+            UIView.animate(withDuration: 0.05, delay: 0.01, options: .autoreverse , animations: {
+                tile.layer.setAffineTransform(CGAffineTransform(scaleX: 1.3, y: 1.3))
             }) { (finished) in
                 tile.layer.setAffineTransform(CGAffineTransform.identity)
             }
@@ -237,27 +220,16 @@ class GameViewController: UIViewController, RandomsFor2048 {
         generateTile()
         generateTile()
         
-
-        //        let origin = cell0.superview!.convert(cell0.frame.origin, to: gameboardView) COORDS CONVERT
-        
-        //        let someView = UIView(frame: CGRect(x: origin.x, y: origin.y, width: 50, height: 50))
-        //        someView.backgroundColor = .yellow
-        //        gameboardView.addSubview(someView)
-        //        gameboardView.bringSubview(toFront: someView)
-        //        UIView.animate(withDuration: 4) {
-        //            someView.frame = CGRect(x: origin.x+30, y: origin.y, width: 50, height: 50)
-        //        }
-        
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
         //perform gameboard animation
-//        UIView.animate(withDuration: 2) {
-//            self.gameboardView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-//        }
+        //        UIView.animate(withDuration: 2) {
+        //            self.gameboardView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+        //        }
         
-
+        
     }
     
     override func didReceiveMemoryWarning() {

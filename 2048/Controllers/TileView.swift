@@ -11,8 +11,8 @@ import UIKit
 class TileView: UIView {
     
     let textColorMap = [ 2:   UIColor.black,
-                         4:   UIColor.black,
-                         8:   UIColor.black,
+                         4:   UIColor.yellow,
+                         8:   UIColor.blue,
                          16:  UIColor.black,
                          32:  UIColor.black,
                          64:  UIColor.black,
@@ -39,10 +39,18 @@ class TileView: UIView {
     var value = 0 {
         didSet {
             numberLabel.text = "\(value)"
+//            numberLabel.attributedText = NSMutableAttributedString(string: "\(value)", attributes: strokeTextAttributes)
             numberLabel.textColor = textColorMap[value]
             numberLabel.backgroundColor = backColorMap[value]
         }
     }
+    
+//    let strokeTextAttributes = [
+//        NSAttributedStringKey.strokeColor : UIColor.red,
+//        NSAttributedStringKey.foregroundColor : UIColor.white,
+//        NSAttributedStringKey.strokeWidth : -4.0,
+//        NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 30)]
+//        as [NSAttributedStringKey : Any]
     
     //MARK: - init function
     init(position: CGPoint, width: CGFloat, value: Int) {
@@ -57,6 +65,7 @@ class TileView: UIView {
         super.init(frame: CGRect(x: position.x, y: position.y, width: width, height: width))
         addSubview(numberLabel)
         layer.cornerRadius = 6
+        clipsToBounds = true
         self.value = value
         backgroundColor = backColorMap[value]
     }
