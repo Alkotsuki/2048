@@ -10,7 +10,7 @@ import UIKit
 
 class GameViewController: UIViewController, RandomsFor2048 {
     
-    
+    //MARK: VARIABLES
     var gameboard = Gameboard(dimension: 4)
     
     var cells: [UIView] {
@@ -26,26 +26,47 @@ class GameViewController: UIViewController, RandomsFor2048 {
         }
     }
     
-    var flagForCheck = [Int](repeating: 0, count: 16)
+//    var flagForCheck = [Int](repeating: 0, count: 16)
     var tileView = [Int:TileView]()
     var tileValue = [Int](repeating: 0, count: 16)
     
-    //MARK: Generate new tile
-    func generateTile() {
+    //MARK: NEW GAME
+    func newGame() {
         
-        let value = random2Or4()
+        for (_, tile) in tileView {
+            tile.removeFromSuperview()
+        }
+        tileView.removeAll()
+        tileValue = [Int](repeating: 0, count: 16)
+        gameboard.tiles = [Int](repeating: 0, count: 16)
+        gameboard.mergeIndex = [Int](repeating: 0, count: 16)
+        score = 0
+        generateTile()
+        generateTile()
+        
+    }
+    
+    //MARK: GENERATE NEW TILE
+    func generateTile() {
         
         if gameboard.isFull() {
             print("No more free space on gameboard")
             return
         } else {
+            let value = random2Or4()
             let index = gameboard.findEmptyCell()
-            insertTile(at: index, with: value)
+            insertTile(at: index, with: value,  animation: .new)
+            if gameboard.isFull() && gameboard.isLost() {
+                gameOverAlert()
+                print("Game Over")
+            }
+            
         }
+        
         
     }
     
-    func insertTile(at index:Int, with value:Int) {
+    func insertTile(at index:Int, with value:Int, animation type: TileAnimationType ) {
         
         let newPosition = findPosition(for: index)
         let tile = TileView(position: newPosition, width: 50, value: value)
@@ -57,11 +78,12 @@ class GameViewController: UIViewController, RandomsFor2048 {
         gameboardView.addSubview(tile)
         gameboardView.bringSubview(toFront: tile)
         
-        //        animateTile
+        animateTile(tile, with: type)
         
 //        if gameboard.isFull() && gameboard.isLost() {
 //            print("Game Over")
 //        }
+
     }
     
     func findPosition(for index: Int) -> CGPoint {
@@ -71,15 +93,68 @@ class GameViewController: UIViewController, RandomsFor2048 {
     }
     
     
-    //MARK: Swipe gesture
+
+    //MARK: REFRESH UI
+    func refreshUI() {
+        
+        //        var index: Int
+        //        var tile: TileView
+        //        var counter = 0
+        
+        let upperBound = gameboard.dimension * gameboard.dimension
+        var counter = 0
+        
+        
+        for index in 0..<upperBound {
+            
+            if gameboard.tiles[index] != 0 && tileValue[index] == 0 {
+                let value = gameboard.tiles[index]
+                insertTile(at: index, with: value, animation: .none)
+                counter = 1
+            }
+            
+            if gameboard.tiles[index] == 0 && tileValue[index] != 0 {
+                //                let tile = tileView[index]!
+                //                tile.removeFromSuperview()
+                
+                tileView[index]!.removeFromSuperview()
+                tileView.removeValue(forKey: index)
+                tileValue[index] = 0
+                counter = 1
+            }
+            
+            if gameboard.tiles[index] > 0 && tileValue[index] > 0 &&
+                gameboard.tiles[index] != tileValue[index] {
+                let tile = tileView[index]!
+                tile.value = gameboard.tiles[index]
+                tileValue[index] = gameboard.tiles[index]
+                if gameboard.mergeIndex[index] == 1 {
+                    animateTile(tile, with: .merge)
+                    gameboard.mergeIndex[index] = 0
+                    score += gameboard.tiles[index]
+                }
+            }
+            
+        }
+        
+        if counter == 1 {
+            generateTile()
+        }
+        
+    }
+    
+    
+    //MARK: SWIPE GESTURE
     @IBAction func swipe(_ sender: UISwipeGestureRecognizer) {
         let direction = sender.direction
         gameboard.shiftTiles(direction)
+        refreshUI()
         print("swiped \(direction)")
     }
     
-    //MARK: Outlets
-    @IBOutlet var globalView: UIView!
+    
+    //MARK: OUTLETS
+
     @IBOutlet weak var gameboardView: UIView!
     
     @IBOutlet weak var cell0:  UIView!
@@ -101,11 +176,56 @@ class GameViewController: UIViewController, RandomsFor2048 {
     
     @IBOutlet weak var scoreLabel: UILabel!
     
-    //MARK: Animations
-    enum TileAnimation {
+    @IBAction func addTilesButtonPressed(_ sender: UIButton) {
+        generateTile()
+        generateTile()
+    }
+    
+    @IBAction func resetButtonPressed(_ sender: UIButton) {
+        newGame()
+    }
+    
+    func gameOverAlert() {
+        let alertController = UIAlertController(title: "Game over", message: "Your score: \(score)", preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
+    
+    //MARK: ANIMATIONS
+    let tilePopMaxScale: CGFloat = 1.1
+    
+    enum TileAnimationType {
         case none
         case new
         case merge
+    }
+    
+    func animateTile(_ tile: TileView, with type: TileAnimationType) {
+        switch type {
+            
+        case .none:
+            return
+            
+        case .new:
+            tile.layer.setAffineTransform(CGAffineTransform(scaleX: 0.1, y: 0.1))
+            UIView.animate(withDuration: 0.18, delay: 0.05, options: .transitionCurlUp, animations: {
+                tile.layer.setAffineTransform(CGAffineTransform(scaleX: self.tilePopMaxScale, y: self.tilePopMaxScale))
+                
+            }) { (finished) in
+                UIView.animate(withDuration: 0.08, animations: {
+                    tile.layer.setAffineTransform(CGAffineTransform.identity)
+                })
+            }
+            
+        case .merge:
+            tile.layer.setAffineTransform(CGAffineTransform(scaleX: 1, y: 1))
+            UIView.animate(withDuration: 0.05, delay: 0.01, options: .curveEaseIn, animations: {
+                tile.layer.setAffineTransform(CGAffineTransform(scaleX: 2.3, y: 2.3))
+            }) { (finished) in
+                tile.layer.setAffineTransform(CGAffineTransform.identity)
+            }
+            
+        }
     }
     
     
@@ -114,7 +234,10 @@ class GameViewController: UIViewController, RandomsFor2048 {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        generateTile()
+        generateTile()
         
+
         //        let origin = cell0.superview!.convert(cell0.frame.origin, to: gameboardView) COORDS CONVERT
         
         //        let someView = UIView(frame: CGRect(x: origin.x, y: origin.y, width: 50, height: 50))
@@ -126,8 +249,15 @@ class GameViewController: UIViewController, RandomsFor2048 {
         //        }
         
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        //perform gameboard animation
+//        UIView.animate(withDuration: 2) {
+//            self.gameboardView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
+//        }
         
-        // Do any additional setup after loading the view.
+
     }
     
     override func didReceiveMemoryWarning() {

@@ -151,6 +151,9 @@
                                                         <real key="value" value="6"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KUP-Oj-epO"/>
+                                                </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCy-H7-2fd">
                                                 <rect key="frame" x="137.66666666666666" y="0.0" width="112.33333333333334" height="44"/>
@@ -161,6 +164,9 @@
                                                         <real key="value" value="6"/>
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
+                                                <connections>
+                                                    <action selector="addTilesButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hBg-5m-ba6"/>
+                                                </connections>
                                             </button>
                                         </subviews>
                                         <constraints>
@@ -405,7 +411,6 @@
                         <outlet property="cell8" destination="dQp-4f-t97" id="IIB-vH-a8c"/>
                         <outlet property="cell9" destination="CEL-yg-FHs" id="JBb-Gz-k3a"/>
                         <outlet property="gameboardView" destination="rDR-fa-y8t" id="7d9-4l-pfw"/>
-                        <outlet property="globalView" destination="8bC-Xf-vdC" id="EtY-Iu-MJa"/>
                         <outlet property="scoreLabel" destination="gdu-Ji-4AB" id="Sja-gI-Wk5"/>
                     </connections>
                 </viewController>

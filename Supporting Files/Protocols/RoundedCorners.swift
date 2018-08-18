@@ -18,3 +18,9 @@ extension UIView {
         }
     }
 }
+
+
+//protocol RoundedCorners: class {
+//   var cornerRadius: CGFloat { get set }
+//}
+

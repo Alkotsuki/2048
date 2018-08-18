@@ -31,30 +31,46 @@ struct Gameboard: RandomsFor2048 {
     }
     
     //Check cell for existing tile
-    func cellIsAvailable(at index: Int) -> Bool {
-
-        if tiles[index] > 0 {
-            return false
-        } else {
-            return true
-        }
-        
-    }
+//    func cellIsAvailable(at index: Int) -> Bool {
+//
+//        if tiles[index] > 0 {
+//            return false
+//        } else {
+//            return true
+//        }
+//        
+//    }
     
     //MARK: Find empty cell
-    mutating func findEmptyCell() -> Int {
+//    mutating func findEmptyCell() -> Int {
+//
+//        let row = randomFromZero(to: 3)
+//        let column = randomFromZero(to: 3)
+//        let index = row * dimension + column
+//
+//        if self.cellIsAvailable(at: index) == false {
+//            print("Tile already set at (\(row),\(column)). Will repeat")
+//            return self.findEmptyCell()
+//        }
+//
+//        return index
+//
+//    }
+    
+    func findEmptyCell() -> Int {
         
-        let row = randomFromZero(to: 3)
-        let column = randomFromZero(to: 3)
-        let index = row * dimension + column
+        var freeIndexes: [Int] = []
+        var counter = 0
         
-        if self.cellIsAvailable(at: index) == false {
-            print("Tile already set at (\(row),\(column)). Will repeat")
-            return self.findEmptyCell()
+        for element in tiles {
+            if element == 0 {
+                freeIndexes.append(counter)
+            }
+            counter += 1
         }
         
-        return index
-        
+        return freeIndexes[randomFromZero(to: freeIndexes.count)]
+
     }
     
     //Check for game over
@@ -82,6 +98,7 @@ struct Gameboard: RandomsFor2048 {
                         }
                     }
                 }
+                flaggedForCheck[index] = 1
                 
             }
         }
