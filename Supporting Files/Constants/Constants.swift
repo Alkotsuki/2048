@@ -23,3 +23,8 @@ struct Segues {
     static let showTop100    = "showTop100"
     static let unwindToStart = "unwindToStartScreen"
 }
+
+struct Keys {
+    static let record = "Record"
+    static let top100 = "Top100"
+}

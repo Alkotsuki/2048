@@ -8,7 +8,7 @@
 
 import Foundation
 
-struct score: Codable {
+struct Score: Codable {
     var name: String
     var score: Int
     
@@ -17,17 +17,17 @@ struct score: Codable {
     static let DocumentsDirectory = FileManager.default.urls(for: .userDirectory, in: .userDomainMask).first!
     static let ArchiveURL = DocumentsDirectory.appendingPathComponent("Scores").appendingPathExtension("plist")
     
-    static func saveLocally(_ scores: [score]) {
+    static func saveLocally(_ scores: [Score]) {
         let propertyListEncoder = PropertyListEncoder()
         let codedScores = try? propertyListEncoder.encode(scores)
         try? codedScores?.write(to: ArchiveURL, options: .noFileProtection)
     }
     
-    static func loadFromWeb() -> [score] {
+    static func loadFromWeb() -> [Score] {
         return []
     }
     
-    static func loadSample() -> [score] {
+    static func loadSample() -> [Score] {
         return []
     }
     

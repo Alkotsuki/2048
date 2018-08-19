@@ -11,6 +11,8 @@ import UIKit
 class GameViewController: UIViewController, RandomsFor2048 {
     
     //MARK: VARIABLES
+    let defaults = UserDefaults.standard
+    
     var gameboard = Gameboard(dimension: 4)
     
     var cells: [UIView] {
@@ -22,9 +24,21 @@ class GameViewController: UIViewController, RandomsFor2048 {
     
     var score: Int = 0  {
         didSet {
-            scoreLabel.text = "SCORE: \(score)"
+            scoreLabel.text = "SCORE: \n\(score)"
         }
     }
+    
+    var record: Int {
+        get {
+            return defaults.integer(forKey: Keys.record)
+        }
+        set {
+            defaults.set(record, forKey: "Record")
+            bestRecordLabel.text = "\(record)"
+        }
+    }
+    
+    var scores: [Score] = []
     
     var tileView = [Int:TileView]()
     var tileValue = [Int](repeating: 0, count: 16)
@@ -69,9 +83,9 @@ class GameViewController: UIViewController, RandomsFor2048 {
     func insertTile(at index:Int, with value:Int, animation type: TileAnimationType ) {
         
         let cell = cells[index]
+        let width = cell.frame.width
         let tileCoords = cell.superview!.convert(cell.frame.origin, to: gameboardView)
-        let tile = TileView(position: tileCoords, width: 50, value: value)
-        
+        let tile = TileView(position: tileCoords, width: width, value: value)
         gameboard.tiles[index] = value
         tileView[index] = tile
         tileValue[index] = value
@@ -157,6 +171,7 @@ class GameViewController: UIViewController, RandomsFor2048 {
     @IBOutlet weak var cell15: UIView!
     
     @IBOutlet weak var scoreLabel: UILabel!
+    @IBOutlet weak var bestRecordLabel: UILabel!
     
     @IBAction func addTilesButtonPressed(_ sender: UIButton) {
         generateTile()
@@ -165,12 +180,6 @@ class GameViewController: UIViewController, RandomsFor2048 {
     
     @IBAction func resetButtonPressed(_ sender: UIButton) {
         newGame()
-    }
-    
-    func gameOverAlert() {
-        let alertController = UIAlertController(title: "Game over", message: "Your score: \(score)", preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
-        self.present(alertController, animated: true, completion: nil)
     }
     
     //MARK: ANIMATIONS
@@ -190,33 +199,81 @@ class GameViewController: UIViewController, RandomsFor2048 {
             
         case .new:
             tile.layer.setAffineTransform(CGAffineTransform(scaleX: 0.1, y: 0.1))
-            UIView.animate(withDuration: 0.18, delay: 0.05, options: .transitionCurlUp, animations: {
-                tile.layer.setAffineTransform(CGAffineTransform(scaleX: self.tilePopMaxScale, y: self.tilePopMaxScale))
-                
-            }) { (finished) in
-                UIView.animate(withDuration: 0.08, animations: {
-                    tile.layer.setAffineTransform(CGAffineTransform.identity)
-                    
-                })
-            }
+            tile.alpha = 0
+//            UIView.animate(withDuration: 0.18, delay: 0.2, options: .transitionCurlUp, animations: {
+//                tile.layer.setAffineTransform(CGAffineTransform(scaleX: self.tilePopMaxScale, y: self.tilePopMaxScale))
+//
+//            }) { (finished) in
+//                UIView.animate(withDuration: 0.08, animations: {
+//                    tile.layer.setAffineTransform(CGAffineTransform.identity)
+//
+//                })
+//            }
+            UIView.animate(withDuration: 0.2, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseIn, animations: {
+                tile.alpha = 1
+                tile.transform = CGAffineTransform.identity
+            }, completion: nil)
+            
+            //        case .merge:
+            //            tile.layer.setAffineTransform(CGAffineTransform(scaleX: 1, y: 1))
+            //            UIView.animate(withDuration: 0.05, delay: 0.01, options: .autoreverse , animations: {
+            //                tile.layer.setAffineTransform(CGAffineTransform(scaleX: 1.3, y: 1.3))
+            //            }) { (finished) in
+            //                tile.layer.setAffineTransform(CGAffineTransform.identity)
+            //            }
             
         case .merge:
-            tile.layer.setAffineTransform(CGAffineTransform(scaleX: 1, y: 1))
-            UIView.animate(withDuration: 0.05, delay: 0.01, options: .autoreverse , animations: {
-                tile.layer.setAffineTransform(CGAffineTransform(scaleX: 1.3, y: 1.3))
-            }) { (finished) in
-                tile.layer.setAffineTransform(CGAffineTransform.identity)
+//            let width = tile.frame.width
+//            let pulsator = Pulsator()
+//            tile.layer.addSublayer(pulsator)
+//            pulsator.frame = CGRect(x: width/2, y: width/2, width: 0, height: 0)
+//            pulsator.repeatCount = 1
+//            pulsator.start()
+            tile.pulsator.start()
+            
+            UIView.animate(withDuration: 0.1, delay: 0.03, usingSpringWithDamping: 0.1, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
+                
+                let scaleTransform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                tile.transform = scaleTransform
+                
+            }) { (_) in
+                tile.transform = CGAffineTransform.identity
             }
+            
             
         }
     }
     
+    //MARK: GAME OVER
+    func gameOverAlert() {
+        
+        var message: String
+        if score > record {
+            message = "New record: \(score)"
+            record = score
+        } else {
+            message = "You scored: \(score)"
+        }
+        
+        
+        let alertController = UIAlertController(title: "Game over",
+                                                message: message,
+                                                preferredStyle: UIAlertControllerStyle.alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        self.present(alertController, animated: true, completion: nil)
+    }
     
-    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == Segues.showTop100 {
+            let top100VC = segue.destination as! Top100TableViewController
+        }
+    }
     
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        scoreLabel.text = "\(score)"
+        bestRecordLabel.text = "\(record)"
         generateTile()
         generateTile()
         
@@ -224,6 +281,7 @@ class GameViewController: UIViewController, RandomsFor2048 {
     }
     
     override func viewDidAppear(_ animated: Bool) {
+//        self.view.layoutIfNeeded()
         //perform gameboard animation
         //        UIView.animate(withDuration: 2) {
         //            self.gameboardView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))

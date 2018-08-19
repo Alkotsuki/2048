@@ -11,7 +11,7 @@ import UIKit
 class TileView: UIView {
     
     let textColorMap = [ 2:   UIColor.black,
-                         4:   UIColor.yellow,
+                         4:   UIColor.blue,
                          8:   UIColor.blue,
                          16:  UIColor.black,
                          32:  UIColor.black,
@@ -34,23 +34,27 @@ class TileView: UIView {
                          1024:UIColor.white,
                          2048:UIColor.white ]
     
+
+
     var numberLabel: UILabel!
+    
+    let pulsator = Pulsator()
     
     var value = 0 {
         didSet {
             numberLabel.text = "\(value)"
-//            numberLabel.attributedText = NSMutableAttributedString(string: "\(value)", attributes: strokeTextAttributes)
+            //            numberLabel.attributedText = NSMutableAttributedString(string: "\(value)", attributes: strokeTextAttributes)
             numberLabel.textColor = textColorMap[value]
             numberLabel.backgroundColor = backColorMap[value]
         }
     }
     
-//    let strokeTextAttributes = [
-//        NSAttributedStringKey.strokeColor : UIColor.red,
-//        NSAttributedStringKey.foregroundColor : UIColor.white,
-//        NSAttributedStringKey.strokeWidth : -4.0,
-//        NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 30)]
-//        as [NSAttributedStringKey : Any]
+    //    let strokeTextAttributes = [
+    //        NSAttributedStringKey.strokeColor : UIColor.red,
+    //        NSAttributedStringKey.foregroundColor : UIColor.white,
+    //        NSAttributedStringKey.strokeWidth : -4.0,
+    //        NSAttributedStringKey.font : UIFont.boldSystemFont(ofSize: 30)]
+    //        as [NSAttributedStringKey : Any]
     
     //MARK: - init function
     init(position: CGPoint, width: CGFloat, value: Int) {
@@ -58,7 +62,7 @@ class TileView: UIView {
         //        numberLabel.textColor = UIColor.white
         numberLabel.textColor = textColorMap[value]
         numberLabel.text = "\(value)"
-        numberLabel.font = UIFont(name:"Arial-BoldMT", size: 40)
+        numberLabel.font = UIFont(name:"Arial-BoldMT", size: width * 0.8)
         numberLabel.textAlignment = .center
         numberLabel.minimumScaleFactor = 0.5
         numberLabel.adjustsFontSizeToFitWidth = true
@@ -68,6 +72,13 @@ class TileView: UIView {
         clipsToBounds = true
         self.value = value
         backgroundColor = backColorMap[value]
+        
+        layer.addSublayer(pulsator)
+        pulsator.frame = CGRect(x: width/2, y: width/2, width: 0, height: 0)
+        pulsator.radius = width
+        pulsator.animationDuration = 0.8
+        pulsator.repeatCount = 1
+    
     }
     
     required init?(coder aDecoder: NSCoder) {
