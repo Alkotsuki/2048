@@ -25,6 +25,9 @@ class GameViewController: UIViewController, RandomsFor2048 {
     var score: Int = 0  {
         didSet {
             scoreLabel.text = "SCORE: \n\(score)"
+            if score > record {
+                bestRecordLabel.text = "BEST: \n\(score)"
+            }
         }
     }
     
@@ -272,8 +275,8 @@ class GameViewController: UIViewController, RandomsFor2048 {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        scoreLabel.text = "\(score)"
-        bestRecordLabel.text = "\(record)"
+        scoreLabel.text = "SCORE: \n\(score)"
+        bestRecordLabel.text = "BEST: \n\(record)"
         generateTile()
         generateTile()
         
