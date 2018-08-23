@@ -89,16 +89,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DkF-4E-I3V">
-                                <rect key="frame" x="122.66666666666669" y="386" width="130" height="40"/>
-                                <color key="backgroundColor" red="1" green="0.15031172289535932" blue="0.013411935471396963" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Start" translatesAutoresizingMaskIntoConstraints="NO" id="6uV-2p-kIN">
+                                <rect key="frame" x="-37.666666666666657" y="-81.333333333333314" width="450.33333333333326" height="974.66666666666652"/>
+                            </imageView>
+                            <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DkF-4E-I3V">
+                                <rect key="frame" x="113" y="467.33333333333331" width="150" height="40"/>
+                                <color key="backgroundColor" red="1" green="0.14836193389999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="130" id="rIz-tQ-HGW"/>
                                     <constraint firstAttribute="height" constant="40" id="tAK-cu-c6K"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="NEW GAME"/>
+                                <state key="normal" title="NEW GAME">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                </state>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
                                         <integer key="value" value="20"/>
@@ -109,48 +112,41 @@
                                     <segue destination="rkL-6e-RiM" kind="show" identifier="newGameSegue" id="nQH-VY-hiK"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivX-qz-vKt">
-                                <rect key="frame" x="137.66666666666666" y="456" width="100" height="40"/>
-                                <color key="backgroundColor" red="1" green="0.15031172289535932" blue="0.013411935471396963" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="100" id="LUI-LF-kFq"/>
-                                </constraints>
-                                <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <state key="normal" title="Top 100"/>
-                                <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="20"/>
-                                    </userDefinedRuntimeAttribute>
-                                    <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
-                                </userDefinedRuntimeAttributes>
-                            </button>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="EZ2048" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CS-zc-QfQ" customClass="GlitchLabel" customModule="_048" customModuleProvider="target">
-                                <rect key="frame" x="16" y="311" width="343" height="191"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EZ2048" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CS-zc-QfQ" customClass="GlitchLabel" customModule="_048" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="284" width="375" height="81.333333333333314"/>
+                                <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="55"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                                 <userDefinedRuntimeAttributes>
                                     <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
-                                        <real key="value" value="6"/>
+                                        <real key="value" value="0.0"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </label>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="ivX-qz-vKt" firstAttribute="top" secondItem="DkF-4E-I3V" secondAttribute="bottom" constant="30" id="DvC-M7-gVc"/>
-                            <constraint firstItem="ivX-qz-vKt" firstAttribute="centerX" secondItem="rZD-Ey-7dy" secondAttribute="centerX" id="KaO-2p-cWR"/>
+                            <constraint firstItem="6uV-2p-kIN" firstAttribute="centerY" secondItem="rZD-Ey-7dy" secondAttribute="centerY" id="2q9-lC-CZn"/>
+                            <constraint firstItem="6uV-2p-kIN" firstAttribute="width" secondItem="rZD-Ey-7dy" secondAttribute="width" multiplier="1.2" id="BYA-s7-xjG"/>
+                            <constraint firstItem="9CS-zc-QfQ" firstAttribute="centerY" secondItem="rZD-Ey-7dy" secondAttribute="centerY" multiplier="0.8" id="DRX-Jd-1i9"/>
+                            <constraint firstItem="9CS-zc-QfQ" firstAttribute="leading" secondItem="rZD-Ey-7dy" secondAttribute="leading" id="TAZ-pV-NJt"/>
+                            <constraint firstItem="9CS-zc-QfQ" firstAttribute="height" secondItem="rZD-Ey-7dy" secondAttribute="height" multiplier="0.1" id="VfG-e3-gu0"/>
                             <constraint firstItem="DkF-4E-I3V" firstAttribute="centerX" secondItem="rZD-Ey-7dy" secondAttribute="centerX" id="X34-2M-ERE"/>
-                            <constraint firstItem="ivX-qz-vKt" firstAttribute="height" secondItem="DkF-4E-I3V" secondAttribute="height" id="jgY-Kl-9Eb"/>
-                            <constraint firstItem="DkF-4E-I3V" firstAttribute="centerY" secondItem="rZD-Ey-7dy" secondAttribute="centerY" id="uTF-Al-WMw"/>
+                            <constraint firstAttribute="trailing" secondItem="9CS-zc-QfQ" secondAttribute="trailing" id="ZvA-ek-EWe"/>
+                            <constraint firstItem="6uV-2p-kIN" firstAttribute="height" secondItem="rZD-Ey-7dy" secondAttribute="height" multiplier="1.2" id="f81-IQ-VlP"/>
+                            <constraint firstItem="6uV-2p-kIN" firstAttribute="centerX" secondItem="rZD-Ey-7dy" secondAttribute="centerX" id="iSC-O1-PMS"/>
+                            <constraint firstItem="DkF-4E-I3V" firstAttribute="centerY" secondItem="rZD-Ey-7dy" secondAttribute="centerY" multiplier="1.2" id="uTF-Al-WMw"/>
+                            <constraint firstItem="DkF-4E-I3V" firstAttribute="width" secondItem="rZD-Ey-7dy" secondAttribute="width" multiplier="0.4" id="yRW-lf-ixx"/>
                         </constraints>
-                        <viewLayoutGuide key="safeArea" id="EKL-eW-hUo"/>
                     </view>
+                    <connections>
+                        <outlet property="backgroundImage" destination="6uV-2p-kIN" id="0gB-ds-gnA"/>
+                        <outlet property="startButton" destination="DkF-4E-I3V" id="lcT-bd-9hB"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Quj-WA-SyZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-567.20000000000005" y="132.26600985221674"/>
+            <point key="canvasLocation" x="-567.5" y="132"/>
         </scene>
         <!--EZ2048-->
         <scene sceneID="tne-QT-ifu">
@@ -532,4 +528,7 @@
             <point key="canvasLocation" x="265" y="132"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="Start" width="526" height="963"/>
+    </resources>
 </document>

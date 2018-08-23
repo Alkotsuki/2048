@@ -9,28 +9,39 @@
 import UIKit
 
 class StartScreenViewController: UIViewController {
-
+    
+    @IBOutlet weak var startButton: UIButton!
+    @IBOutlet weak var backgroundImage: UIImageView!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        startButton.addParallax(amount: 20)
+        backgroundImage.addParallax(amount: -20)
+
+        
+        //Pulsator for "New game" button
+        let pulse = Pulsator()
+        pulse.frame = CGRect(x: startButton.frame.width / 2, y: startButton.frame.height / 2, width: 0, height: 0)
+        startButton.layer.addSublayer(pulse)
+        pulse.backgroundColor = UIColor.white.cgColor
+        pulse.radius = 200
+        pulse.animationDuration = 0.8
+        pulse.pulseInterval = 2
+        pulse.start()
+        
+        
+        
         // Do any additional setup after loading the view.
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
+    
+    
     @IBAction func unwindToStartScreen(with segue: UIStoryboardSegue) {
         
     }
