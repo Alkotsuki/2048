@@ -15,6 +15,16 @@ class Top100TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return scores.count
     }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: Tables.top100CellIdentifier, for: indexPath) as! Top100TableViewCell
+        let score = scores[indexPath.row]
+        cell.numberLabel.text = "\(indexPath.row + 1)."
+        cell.nameLabel.text   = score.name
+        cell.scoreLabel.text  = "\(score.score)"
+                
+        return cell
+    }
 
 
     override func viewDidLoad() {

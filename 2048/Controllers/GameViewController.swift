@@ -183,6 +183,8 @@ class GameViewController: UIViewController, RandomsFor2048 {
     
     @IBAction func resetButtonPressed(_ sender: UIButton) {
         newGame()
+        print("[[[SCORES COUNT: \(scores.count)]]]")
+        
     }
     
     //MARK: ANIMATIONS
@@ -203,15 +205,15 @@ class GameViewController: UIViewController, RandomsFor2048 {
         case .new:
             tile.layer.setAffineTransform(CGAffineTransform(scaleX: 0.1, y: 0.1))
             tile.alpha = 0
-//            UIView.animate(withDuration: 0.18, delay: 0.2, options: .transitionCurlUp, animations: {
-//                tile.layer.setAffineTransform(CGAffineTransform(scaleX: self.tilePopMaxScale, y: self.tilePopMaxScale))
-//
-//            }) { (finished) in
-//                UIView.animate(withDuration: 0.08, animations: {
-//                    tile.layer.setAffineTransform(CGAffineTransform.identity)
-//
-//                })
-//            }
+            //            UIView.animate(withDuration: 0.18, delay: 0.2, options: .transitionCurlUp, animations: {
+            //                tile.layer.setAffineTransform(CGAffineTransform(scaleX: self.tilePopMaxScale, y: self.tilePopMaxScale))
+            //
+            //            }) { (finished) in
+            //                UIView.animate(withDuration: 0.08, animations: {
+            //                    tile.layer.setAffineTransform(CGAffineTransform.identity)
+            //
+            //                })
+            //            }
             UIView.animate(withDuration: 0.2, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseIn, animations: {
                 tile.alpha = 1
                 tile.transform = CGAffineTransform.identity
@@ -226,12 +228,12 @@ class GameViewController: UIViewController, RandomsFor2048 {
             //            }
             
         case .merge:
-//            let width = tile.frame.width
-//            let pulsator = Pulsator()
-//            tile.layer.addSublayer(pulsator)
-//            pulsator.frame = CGRect(x: width/2, y: width/2, width: 0, height: 0)
-//            pulsator.repeatCount = 1
-//            pulsator.start()
+            //            let width = tile.frame.width
+            //            let pulsator = Pulsator()
+            //            tile.layer.addSublayer(pulsator)
+            //            pulsator.frame = CGRect(x: width/2, y: width/2, width: 0, height: 0)
+            //            pulsator.repeatCount = 1
+            //            pulsator.start()
             tile.pulsator.start()
             
             UIView.animate(withDuration: 0.1, delay: 0.03, usingSpringWithDamping: 0.1, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
@@ -247,28 +249,83 @@ class GameViewController: UIViewController, RandomsFor2048 {
         }
     }
     
-    //MARK: GAME OVER
-    func gameOverAlert() {
+    //MARK: GAME OVER ALERT
+    private func gameOverAlert() {
         
-        var message: String
-        if score > record {
-            message = "New record: \(score)"
+        switch true {
+        case score > (scores.last?.score)!:
+            presentGameOverAlert(withMessage: "You made it to Top-100 worldwide with score: \(score)",
+                andStyle: .worldwideRecord)
+            if score > record {
+                record = score
+            }
+        case score > record:
             record = score
-        } else {
-            message = "You scored: \(score)"
+            presentGameOverAlert(withMessage: "New personal best: \(score)",
+                andStyle: .personalRecord)
+        default:
+            presentGameOverAlert(withMessage: "You scored: \(score)",
+                andStyle: .notARecord)
         }
         
+    }
+    
+    func presentGameOverAlert(withMessage message: String, andStyle style: AlertControllerStyle) {
+        let alertController = TextEnabledAlertController(title: "Game over",
+                                                         message: message,
+                                                         preferredStyle: .alert)
         
-        let alertController = UIAlertController(title: "Game over",
-                                                message: message,
-                                                preferredStyle: UIAlertControllerStyle.alert)
-        alertController.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+        
+        switch style {
+        case .worldwideRecord:
+            
+            let saveAction = UIAlertAction(title: "Submit", style: .default) { (action) in
+                if let name = alertController.textFields?.first?.text {
+                    let newHighScore = Score(name: name, score: self.score)
+                    Score.uploadToFirestore(newHighScore)
+                    self.scores.append(newHighScore)
+                    self.scores = self.scores.sorted(by: { $0.score > $1.score })
+                    self.performSegue(withIdentifier: Segues.showTop100, sender: self)
+                }
+            }
+            
+            let cancelAction = UIAlertAction(title: "Cancel", style: .cancel, handler: nil)
+            
+            alertController.addAction(saveAction)
+            alertController.addAction(cancelAction)
+            saveAction.isEnabled = false
+            
+            alertController.addTextField(configurationHandler: { (textField) in
+                textField.placeholder = "Your name"
+                textField.autocapitalizationType = .words
+            }) { (textField) in
+                saveAction.isEnabled = (textField.text?.count ?? 0) > 0
+            }
+            
+        case .personalRecord:
+            let saveAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(saveAction)
+            
+        case .notARecord:
+            let saveAction = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alertController.addAction(saveAction)
+        }
+        
         self.present(alertController, animated: true, completion: nil)
     }
+    
+    enum AlertControllerStyle {
+        case worldwideRecord
+        case personalRecord
+        case notARecord
+    }
+    
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == Segues.showTop100 {
             let top100VC = segue.destination as! Top100TableViewController
+            top100VC.scores = scores
+            
         }
     }
     
@@ -279,12 +336,18 @@ class GameViewController: UIViewController, RandomsFor2048 {
         bestRecordLabel.text = "BEST: \n\(record)"
         generateTile()
         generateTile()
-        
+        Score.loadTop100FromFirestore { (scores) in
+            if scores.count != 0 {
+                self.scores = scores
+            } else {
+                self.scores = Score.loadSampleTop100()
+            }
+        }
         
     }
     
     override func viewDidAppear(_ animated: Bool) {
-//        self.view.layoutIfNeeded()
+        //        self.view.layoutIfNeeded()
         //perform gameboard animation
         //        UIView.animate(withDuration: 2) {
         //            self.gameboardView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))

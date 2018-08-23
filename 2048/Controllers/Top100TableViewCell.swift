@@ -9,6 +9,11 @@
 import UIKit
 
 class Top100TableViewCell: UITableViewCell {
+    
+    @IBOutlet weak var numberLabel: UILabel!
+    @IBOutlet weak var nameLabel: UILabel!
+    @IBOutlet weak var scoreLabel: UILabel!
+    
 
     override func awakeFromNib() {
         super.awakeFromNib()

@@ -28,3 +28,9 @@ struct Keys {
     static let record = "Record"
     static let top100 = "Top100"
 }
+
+struct AlertMessages {
+    static let top100 = "You made it to Top-100 worldwide!"
+    static let personalBest = "New personal best"
+    static let youScored = "You scored"
+}
