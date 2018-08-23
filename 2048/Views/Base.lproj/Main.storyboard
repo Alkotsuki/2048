@@ -138,6 +138,7 @@
                             <constraint firstItem="DkF-4E-I3V" firstAttribute="centerY" secondItem="rZD-Ey-7dy" secondAttribute="centerY" multiplier="1.2" id="uTF-Al-WMw"/>
                             <constraint firstItem="DkF-4E-I3V" firstAttribute="width" secondItem="rZD-Ey-7dy" secondAttribute="width" multiplier="0.4" id="yRW-lf-ixx"/>
                         </constraints>
+                        <viewLayoutGuide key="safeArea" id="OnS-Hd-usb"/>
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="6uV-2p-kIN" id="0gB-ds-gnA"/>
