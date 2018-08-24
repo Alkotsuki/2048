@@ -147,9 +147,14 @@ class GameViewController: UIViewController, RandomsFor2048 {
     @IBAction func swipe(_ sender: UISwipeGestureRecognizer) {
         let direction = sender.direction
         gameboard.shiftTiles(direction)
+//        visualizeSwipe
         refreshUI()
         print("swiped \(direction)")
     }
+    
+//    func visualizeSwipe(direction: UISwipeGestureRecognizerDirection) {
+//        switch 
+//    }
     
     
     //MARK: OUTLETS
@@ -205,37 +210,15 @@ class GameViewController: UIViewController, RandomsFor2048 {
         case .new:
             tile.layer.setAffineTransform(CGAffineTransform(scaleX: 0.1, y: 0.1))
             tile.alpha = 0
-            //            UIView.animate(withDuration: 0.18, delay: 0.2, options: .transitionCurlUp, animations: {
-            //                tile.layer.setAffineTransform(CGAffineTransform(scaleX: self.tilePopMaxScale, y: self.tilePopMaxScale))
-            //
-            //            }) { (finished) in
-            //                UIView.animate(withDuration: 0.08, animations: {
-            //                    tile.layer.setAffineTransform(CGAffineTransform.identity)
-            //
-            //                })
-            //            }
+
             UIView.animate(withDuration: 0.2, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseIn, animations: {
                 tile.alpha = 1
                 tile.transform = CGAffineTransform.identity
             }, completion: nil)
             
-            //        case .merge:
-            //            tile.layer.setAffineTransform(CGAffineTransform(scaleX: 1, y: 1))
-            //            UIView.animate(withDuration: 0.05, delay: 0.01, options: .autoreverse , animations: {
-            //                tile.layer.setAffineTransform(CGAffineTransform(scaleX: 1.3, y: 1.3))
-            //            }) { (finished) in
-            //                tile.layer.setAffineTransform(CGAffineTransform.identity)
-            //            }
-            
         case .merge:
-            //            let width = tile.frame.width
-            //            let pulsator = Pulsator()
-            //            tile.layer.addSublayer(pulsator)
-            //            pulsator.frame = CGRect(x: width/2, y: width/2, width: 0, height: 0)
-            //            pulsator.repeatCount = 1
-            //            pulsator.start()
+
             tile.pulsator.start()
-            
             UIView.animate(withDuration: 0.1, delay: 0.03, usingSpringWithDamping: 0.1, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
                 
                 let scaleTransform = CGAffineTransform(scaleX: 1.3, y: 1.3)
@@ -270,11 +253,11 @@ class GameViewController: UIViewController, RandomsFor2048 {
         
     }
     
+    
     func presentGameOverAlert(withMessage message: String, andStyle style: AlertControllerStyle) {
         let alertController = TextEnabledAlertController(title: "Game over",
                                                          message: message,
                                                          preferredStyle: .alert)
-        
         
         switch style {
         case .worldwideRecord:
@@ -334,8 +317,10 @@ class GameViewController: UIViewController, RandomsFor2048 {
         super.viewDidLoad()
         scoreLabel.text = "SCORE: \n\(score)"
         bestRecordLabel.text = "BEST: \n\(record)"
+        
         generateTile()
         generateTile()
+        
         Score.loadTop100FromFirestore { (scores) in
             if scores.count != 0 {
                 self.scores = scores

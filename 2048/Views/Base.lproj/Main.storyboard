@@ -109,7 +109,7 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
-                                    <segue destination="rkL-6e-RiM" kind="show" identifier="newGameSegue" id="nQH-VY-hiK"/>
+                                    <action selector="newGameButtonTapped:" destination="h3n-QC-olZ" eventType="touchUpInside" id="nlX-d7-h9q"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EZ2048" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CS-zc-QfQ" customClass="GlitchLabel" customModule="_048" customModuleProvider="target">
@@ -142,6 +142,7 @@
                     </view>
                     <connections>
                         <outlet property="backgroundImage" destination="6uV-2p-kIN" id="0gB-ds-gnA"/>
+                        <outlet property="glitchLabel" destination="9CS-zc-QfQ" id="8qy-4S-Qqb"/>
                         <outlet property="startButton" destination="DkF-4E-I3V" id="lcT-bd-9hB"/>
                     </connections>
                 </viewController>
@@ -508,7 +509,7 @@
         <!--Navigation Controller-->
         <scene sceneID="OgE-td-K95">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="rkL-6e-RiM" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="GameNavigationController" automaticallyAdjustsScrollViewInsets="NO" id="rkL-6e-RiM" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" barStyle="black" id="5o3-nt-fFf">
                         <rect key="frame" x="0.0" y="44" width="375" height="44"/>

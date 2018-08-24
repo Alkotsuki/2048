@@ -10,6 +10,7 @@ import Foundation
 
 struct ViewControllers {
     static let start  = "StartScreenViewController"
+    static let gameNavigation = "GameNavigationController"
     static let game   = "GameViewController"
     static let top100 = "Top100TableViewController"
 }

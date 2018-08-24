@@ -16,6 +16,7 @@
 		B735942121230AB40031EB44 /* TileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B735942021230AB40031EB44 /* TileView.swift */; };
 		B735942321230AD20031EB44 /* Gameboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = B735942221230AD20031EB44 /* Gameboard.swift */; };
 		B73A5BCE212704EC00429435 /* Top100TableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B73A5BCD212704EC00429435 /* Top100TableViewCell.swift */; };
+		B761C2412130290D00BAFA58 /* JTMaterialTransition.swift in Sources */ = {isa = PBXBuildFile; fileRef = B761C2402130290D00BAFA58 /* JTMaterialTransition.swift */; };
 		B787B00C212F203100C14240 /* Parallax.swift in Sources */ = {isa = PBXBuildFile; fileRef = B787B00B212F203100C14240 /* Parallax.swift */; };
 		B78F7B3E2128342E005FBFBF /* GlitchLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B78F7B3D2128342E005FBFBF /* GlitchLabel.swift */; };
 		B79799642122F76800996CD4 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79799632122F76800996CD4 /* AppDelegate.swift */; };
@@ -40,6 +41,7 @@
 		B735942021230AB40031EB44 /* TileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TileView.swift; sourceTree = "<group>"; };
 		B735942221230AD20031EB44 /* Gameboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gameboard.swift; sourceTree = "<group>"; };
 		B73A5BCD212704EC00429435 /* Top100TableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top100TableViewCell.swift; sourceTree = "<group>"; };
+		B761C2402130290D00BAFA58 /* JTMaterialTransition.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JTMaterialTransition.swift; sourceTree = "<group>"; };
 		B787B00B212F203100C14240 /* Parallax.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Parallax.swift; sourceTree = "<group>"; };
 		B78F7B3D2128342E005FBFBF /* GlitchLabel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GlitchLabel.swift; sourceTree = "<group>"; };
 		B79799602122F76800996CD4 /* 2048.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 2048.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -100,6 +102,7 @@
 				B78F7B3D2128342E005FBFBF /* GlitchLabel.swift */,
 				B709286C212970DC00F48126 /* Pulsator.swift */,
 				B7D5F2D3212EC0D7006D8C4F /* TextEnabledAlertController.swift */,
+				B761C2402130290D00BAFA58 /* JTMaterialTransition.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				B735942321230AD20031EB44 /* Gameboard.swift in Sources */,
 				B787B00C212F203100C14240 /* Parallax.swift in Sources */,
 				B70676782123233900B8F752 /* RandomsFor2048.swift in Sources */,
+				B761C2412130290D00BAFA58 /* JTMaterialTransition.swift in Sources */,
 				B78F7B3E2128342E005FBFBF /* GlitchLabel.swift in Sources */,
 				B709286D212970DC00F48126 /* Pulsator.swift in Sources */,
 			);

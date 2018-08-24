@@ -12,10 +12,23 @@ class StartScreenViewController: UIViewController {
     
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var backgroundImage: UIImageView!
+    @IBOutlet weak var glitchLabel: GlitchLabel!
     
+    var transition: JTMaterialTransition?
+    
+    @IBAction func newGameButtonTapped(_ sender: UIButton) {
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let gameViewController = storyboard.instantiateViewController(withIdentifier: ViewControllers.gameNavigation)
+        gameViewController.modalPresentationStyle = .custom
+        gameViewController.transitioningDelegate = self.transition
+        self.present(gameViewController, animated: true, completion: nil)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        //Parallax for views
+        glitchLabel.addParallax(amount: 20)
         startButton.addParallax(amount: 20)
         backgroundImage.addParallax(amount: -20)
 
@@ -30,7 +43,7 @@ class StartScreenViewController: UIViewController {
         pulse.pulseInterval = 2
         pulse.start()
         
-        
+        self.transition = JTMaterialTransition(animatedView: self.startButton)
         
         // Do any additional setup after loading the view.
     }
