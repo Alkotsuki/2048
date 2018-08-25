@@ -16,6 +16,18 @@ class StartScreenViewController: UIViewController {
     
     var transition: JTMaterialTransition?
     
+    @IBAction func buttonTouched(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+    }
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1, delay: 0.1, options: [], animations: {
+            sender.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
+    
     @IBAction func newGameButtonTapped(_ sender: UIButton) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let gameViewController = storyboard.instantiateViewController(withIdentifier: ViewControllers.gameNavigation)
@@ -45,7 +57,6 @@ class StartScreenViewController: UIViewController {
         
         self.transition = JTMaterialTransition(animatedView: self.startButton)
         
-        // Do any additional setup after loading the view.
     }
     
     override func didReceiveMemoryWarning() {

@@ -90,8 +90,8 @@ class GameViewController: UIViewController, RandomsFor2048 {
         let tileCoords = cell.superview!.convert(cell.frame.origin, to: gameboardView)
         let tile = TileView(position: tileCoords, width: width, value: value)
         gameboard.tiles[index] = value
-        tileView[index] = tile
         tileValue[index] = value
+        tileView[index] = tile
         
         gameboardView.addSubview(tile)
         gameboardView.bringSubview(toFront: tile)
@@ -117,8 +117,8 @@ class GameViewController: UIViewController, RandomsFor2048 {
             
             if gameboard.tiles[index] == 0 && tileValue[index] != 0 {
                 tileView[index]!.removeFromSuperview()
-                tileView.removeValue(forKey: index)
                 tileValue[index] = 0
+                tileView.removeValue(forKey: index)
                 counter = 1
             }
             
@@ -147,15 +147,11 @@ class GameViewController: UIViewController, RandomsFor2048 {
     @IBAction func swipe(_ sender: UISwipeGestureRecognizer) {
         let direction = sender.direction
         gameboard.shiftTiles(direction)
-//        visualizeSwipe
         refreshUI()
         print("swiped \(direction)")
     }
     
-//    func visualizeSwipe(direction: UISwipeGestureRecognizerDirection) {
-//        switch 
-//    }
-    
+
     
     //MARK: OUTLETS
     
@@ -181,6 +177,18 @@ class GameViewController: UIViewController, RandomsFor2048 {
     @IBOutlet weak var scoreLabel: UILabel!
     @IBOutlet weak var bestRecordLabel: UILabel!
     
+    @IBAction func buttonTouched(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1) {
+            sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+        }
+    }
+    
+    @IBAction func buttonPressed(_ sender: UIButton) {
+        UIView.animate(withDuration: 0.1, delay: 0.1, options: [], animations: {
+            sender.transform = CGAffineTransform.identity
+        }, completion: nil)
+    }
+    
     @IBAction func addTilesButtonPressed(_ sender: UIButton) {
         generateTile()
         generateTile()
@@ -188,12 +196,9 @@ class GameViewController: UIViewController, RandomsFor2048 {
     
     @IBAction func resetButtonPressed(_ sender: UIButton) {
         newGame()
-        print("[[[SCORES COUNT: \(scores.count)]]]")
-        
     }
     
     //MARK: ANIMATIONS
-    let tilePopMaxScale: CGFloat = 1.1
     
     enum TileAnimationType {
         case none
@@ -211,21 +216,24 @@ class GameViewController: UIViewController, RandomsFor2048 {
             tile.layer.setAffineTransform(CGAffineTransform(scaleX: 0.1, y: 0.1))
             tile.alpha = 0
 
-            UIView.animate(withDuration: 0.2, delay: 0.2, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: .curveEaseIn, animations: {
+            UIView.animate(withDuration: 0.2, delay: 0.3, usingSpringWithDamping: 0.2, initialSpringVelocity: 6, options: .curveEaseInOut, animations: {
                 tile.alpha = 1
                 tile.transform = CGAffineTransform.identity
             }, completion: nil)
             
         case .merge:
-
+            
             tile.pulsator.start()
-            UIView.animate(withDuration: 0.1, delay: 0.03, usingSpringWithDamping: 0.1, initialSpringVelocity: 5, options: .curveEaseOut, animations: {
+            UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 
                 let scaleTransform = CGAffineTransform(scaleX: 1.3, y: 1.3)
                 tile.transform = scaleTransform
                 
             }) { (_) in
-                tile.transform = CGAffineTransform.identity
+                UIView.animate(withDuration: 0.01, animations: {
+                    tile.transform = CGAffineTransform.identity
+                })
+                
             }
             
             

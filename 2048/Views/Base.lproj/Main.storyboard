@@ -11,6 +11,11 @@
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <array key="GothaProBla.otf">
+            <string>GothamPro-Black</string>
+        </array>
+    </customFonts>
     <scenes>
         <!--Top 100-->
         <scene sceneID="u7a-8h-Dp8">
@@ -98,7 +103,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="tAK-cu-c6K"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="boldSystem" pointSize="20"/>
+                                <fontDescription key="fontDescription" name="GothamPro-Black" family="Gotham Pro" pointSize="18"/>
                                 <state key="normal" title="NEW GAME">
                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -109,6 +114,8 @@
                                     <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                 </userDefinedRuntimeAttributes>
                                 <connections>
+                                    <action selector="buttonPressed:" destination="h3n-QC-olZ" eventType="touchUpInside" id="Zhh-Bt-QFM"/>
+                                    <action selector="buttonTouched:" destination="h3n-QC-olZ" eventType="touchDown" id="HeG-3D-YOc"/>
                                     <action selector="newGameButtonTapped:" destination="h3n-QC-olZ" eventType="touchUpInside" id="nlX-d7-h9q"/>
                                 </connections>
                             </button>
@@ -205,6 +212,8 @@
                                                     </userDefinedRuntimeAttribute>
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
+                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="gJH-OG-tSa"/>
+                                                    <action selector="buttonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="VeW-kZ-hI5"/>
                                                     <action selector="resetButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="KUP-Oj-epO"/>
                                                 </connections>
                                             </button>
@@ -221,6 +230,8 @@
                                                 </userDefinedRuntimeAttributes>
                                                 <connections>
                                                     <action selector="addTilesButtonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hBg-5m-ba6"/>
+                                                    <action selector="buttonPressed:" destination="BYZ-38-t0r" eventType="touchUpInside" id="9It-wT-XvF"/>
+                                                    <action selector="buttonTouched:" destination="BYZ-38-t0r" eventType="touchDown" id="doa-Xj-fzw"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -412,7 +423,7 @@
                                         </subviews>
                                     </stackView>
                                 </subviews>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="backgroundColor" red="0.21701614767158584" green="0.21701614767158584" blue="0.21701614767158584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rDR-fa-y8t" secondAttribute="height" multiplier="1:1" id="ct3-p7-Rg1"/>
                                     <constraint firstItem="qhR-r3-H0A" firstAttribute="leading" secondItem="rDR-fa-y8t" secondAttribute="leading" constant="5" id="fQE-do-r12"/>

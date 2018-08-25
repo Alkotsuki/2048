@@ -28,6 +28,7 @@
 		B79799812122FFE800996CD4 /* Top100TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79799802122FFE800996CD4 /* Top100TableViewController.swift */; };
 		B79799832123025700996CD4 /* Top100.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79799822123025700996CD4 /* Top100.swift */; };
 		B7D5F2D4212EC0D7006D8C4F /* TextEnabledAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D5F2D3212EC0D7006D8C4F /* TextEnabledAlertController.swift */; };
+		B7D8969A21315AD700BC277A /* GothaProBla.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7D89699213159C300BC277A /* GothaProBla.otf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 		B79799802122FFE800996CD4 /* Top100TableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Top100TableViewController.swift; path = 2048/Controllers/Top100TableViewController.swift; sourceTree = SOURCE_ROOT; };
 		B79799822123025700996CD4 /* Top100.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Top100.swift; sourceTree = "<group>"; };
 		B7D5F2D3212EC0D7006D8C4F /* TextEnabledAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEnabledAlertController.swift; sourceTree = "<group>"; };
+		B7D89699213159C300BC277A /* GothaProBla.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothaProBla.otf; sourceTree = "<group>"; };
 		DB701BB617176092C6122D8E /* Pods_2048.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2048.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -114,6 +116,7 @@
 				B70676762123230400B8F752 /* Protocols */,
 				B7F3F504212B1D6E0049E53A /* Extensions */,
 				B7067675212322FA00B8F752 /* Constants */,
+				B7D896972131598300BC277A /* Resources */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -186,6 +189,22 @@
 				B73A5BCD212704EC00429435 /* Top100TableViewCell.swift */,
 			);
 			path = Controllers;
+			sourceTree = "<group>";
+		};
+		B7D896972131598300BC277A /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				B7D89698213159B400BC277A /* Fonts */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		B7D89698213159B400BC277A /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				B7D89699213159C300BC277A /* GothaProBla.otf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		B7F3F504212B1D6E0049E53A /* Extensions */ = {
@@ -269,6 +288,7 @@
 				B70E36DA212C44E100C4463A /* GoogleService-Info.plist in Resources */,
 				B797996B2122F76900996CD4 /* Assets.xcassets in Resources */,
 				B79799692122F76800996CD4 /* Main.storyboard in Resources */,
+				B7D8969A21315AD700BC277A /* GothaProBla.otf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
