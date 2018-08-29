@@ -7,22 +7,17 @@
 //
 //  Objective-C version: https://github.com/shu223/PulsingHalo
 
-#if os(iOS)
+
 import UIKit
+import QuartzCore
+
 public typealias Color = UIColor
     
 internal let screenScale = UIScreen.main.scale
 internal let applicationWillBecomeActiveNotfication = NSNotification.Name.UIApplicationWillEnterForeground
 internal let applicationDidResignActiveNotification = NSNotification.Name.UIApplicationDidEnterBackground
-#elseif os(macOS)
-import Cocoa
-public typealias Color = NSColor
-    
-internal let screenScale = NSScreen.main?.backingScaleFactor ?? 0.0
-internal let applicationWillBecomeActiveNotfication = NSApplication.willBecomeActiveNotification
-internal let applicationDidResignActiveNotification = NSApplication.didResignActiveNotification
-#endif
-import QuartzCore
+
+
 
 internal let kPulsatorAnimationKey = "pulsator"
 

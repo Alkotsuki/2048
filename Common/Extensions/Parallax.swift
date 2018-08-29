@@ -23,6 +23,7 @@ extension UIView {
         let group = UIMotionEffectGroup()
         group.motionEffects = [horizontal, vertical]
         self.addMotionEffect(group)
+        
     }
     
 }

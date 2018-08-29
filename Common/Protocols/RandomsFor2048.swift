@@ -8,21 +8,7 @@
 
 import Foundation
 
-//extension Int {
-//    func randomFromOne(to max: Int) -> Int {
-//        return Int(arc4random_uniform(UInt32(max)) + 1)
-//    }
-//    
-//    func random2Or4() -> Int {
-//        let randomValue = Int(arc4random() % 10)
-//        if randomValue == 1 {
-//            return 4
-//        } else {
-//            return 2
-//        }
-//    }
-//}
-
+//Defining protocol for generating random numbers
 protocol RandomsFor2048 {
     func randomFromZero(to max: Int) -> Int
     func randomFromOne(to max: Int) -> Int

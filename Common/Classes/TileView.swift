@@ -33,25 +33,9 @@ class TileView: UIView {
                          512: UIColor(red: 0.33, green: 0.05, blue: 0.91, alpha: 1),
                          1024:UIColor(red: 0.44, green: 0.63, blue: 1.00, alpha: 1),
                          2048:UIColor.white ]
-  
-//    let backColorMap = [ 2:   UIColor.black,
-//                         4:   UIColor.black,
-//                         8:   UIColor.black,
-//                         16:  UIColor.black,
-//                         32:  UIColor.black,
-//                         64:  UIColor.black,
-//                         128: UIColor.black,
-//                         256: UIColor.black,
-//                         512: UIColor.black,
-//                         1024:UIColor.black,
-//                         2048:UIColor.white ]
-
-
-    var numberLabel: UILabel!
     
-//    let image = UIImage(named: "TileBackground")!
-//    var imageView = UIImageView(image: UIImage(named: "TileBackground"))
-
+    
+    var numberLabel: UILabel!
     
     let pulsator = Pulsator()
     
@@ -66,36 +50,20 @@ class TileView: UIView {
     //MARK: - init function
     init(position: CGPoint, width: CGFloat, height: CGFloat, value: Int) {
         
-        
-//        imageView.image = UIImage(named: "TileBackground")
-//        imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
-//        imageView.alpha = 0.7
-        
-        
         numberLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
         numberLabel.textColor = textColorMap[value]
         numberLabel.text = "\(value)"
-//        numberLabel.font = UIFont(name:"AvenirNextCondensed-Heavy", size: width * 0.7)
-//        numberLabel.font = UIFont(name: "GothamPro-Black", size: width * 0.6)
         numberLabel.font = UIFont.systemFont(ofSize: width * 0.6, weight: .black)
         numberLabel.textAlignment = .center
         numberLabel.minimumScaleFactor = 0.4
         numberLabel.adjustsFontSizeToFitWidth = true
-        super.init(frame: CGRect(x: position.x, y: position.y, width: width, height: height))
-        
-
-//        addSubview(imageView)
-//        sendSubview(toBack: imageView)
-        
+        super.init(frame: CGRect(x: position.x, y: position.y, width: width, height: height))        
         addSubview(numberLabel)
-//        bringSubview(toFront: numberLabel)
         layer.cornerRadius = 6
         clipsToBounds = true
         self.value = value
         backgroundColor = backColorMap[value]
-        
 
-        
         layer.addSublayer(pulsator)
         pulsator.frame = CGRect(x: width/2, y: width/2, width: 0, height: 0)
         pulsator.radius = width

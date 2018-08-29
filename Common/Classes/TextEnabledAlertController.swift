@@ -8,6 +8,7 @@
 
 import UIKit
 
+//Alert controller with dependancy between text field and 'ok" button.
 public class TextEnabledAlertController: UIAlertController {
     private var textFieldActions = [UITextField: ((UITextField)->Void)]()
     

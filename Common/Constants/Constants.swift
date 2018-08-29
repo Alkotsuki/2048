@@ -15,7 +15,7 @@ struct ViewControllers {
     static let top100 = "Top100TableViewController"
 }
 
-struct Tables {
+struct TableCells {
     static let top100CellIdentifier = "scoreCell"
 }
 
@@ -27,7 +27,6 @@ struct Segues {
 
 struct Keys {
     static let record = "Record"
-    static let top100 = "Top100"
 }
 
 struct AlertMessages {

@@ -10,12 +10,13 @@ import UIKit
 
 class StartScreenViewController: UIViewController {
     
+    var transition: JTMaterialTransition?
+    
     @IBOutlet weak var startButton: UIButton!
     @IBOutlet weak var backgroundImage: UIImageView!
     @IBOutlet weak var glitchLabel: GlitchLabel!
     
-    var transition: JTMaterialTransition?
-    
+    //MARK: BUTTON ANIMATIONS
     @IBAction func buttonTouched(_ sender: UIButton) {
         UIView.animate(withDuration: 0.1) {
             sender.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
@@ -43,7 +44,7 @@ class StartScreenViewController: UIViewController {
         glitchLabel.addParallax(amount: 20)
         startButton.addParallax(amount: 20)
         backgroundImage.addParallax(amount: -20)
-
+        
         
         //Pulsator for "New game" button
         let pulse = Pulsator()
@@ -58,13 +59,6 @@ class StartScreenViewController: UIViewController {
         self.transition = JTMaterialTransition(animatedView: self.startButton)
         
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    
     
     @IBAction func unwindToStartScreen(with segue: UIStoryboardSegue) {
         

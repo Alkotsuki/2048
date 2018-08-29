@@ -11,8 +11,8 @@ import UIKit
 struct Gameboard: RandomsFor2048 {
     
     var dimension: Int
-    var tiles: [Int]
-    var mergeIndex: [Int] //store the position where a merge event occur
+    var tiles: [Int] //Store values for tiles
+    var mergeIndex: [Int] //Store the position where a merge event occur
     
     init(dimension: Int) {
         self.dimension = dimension
@@ -20,44 +20,20 @@ struct Gameboard: RandomsFor2048 {
         self.mergeIndex = [Int](repeating: 0, count: dimension*dimension)
     }
     
-    //Check if the gameboard has empty cells
+    //MARK: CHECK IF GAMEBOARD IS FULL
     func isFull() -> Bool {
+        
         for tile in tiles {
             if tile == 0 {
                 return false
             }
         }
         return true
+        
     }
     
-    //Check cell for existing tile
-//    func cellIsAvailable(at index: Int) -> Bool {
-//
-//        if tiles[index] > 0 {
-//            return false
-//        } else {
-//            return true
-//        }
-//        
-//    }
-    
-    //MARK: Find empty cell
-//    mutating func findEmptyCell() -> Int {
-//
-//        let row = randomFromZero(to: 3)
-//        let column = randomFromZero(to: 3)
-//        let index = row * dimension + column
-//
-//        if self.cellIsAvailable(at: index) == false {
-//            print("Tile already set at (\(row),\(column)). Will repeat")
-//            return self.findEmptyCell()
-//        }
-//
-//        return index
-//
-//    }
-    
-    func findEmptyCell() -> Int {
+    //MARK: FIND RANDOM EMPTY CELL
+    func findRandomEmptyCell() -> Int {
         
         var freeIndexes: [Int] = []
         var counter = 0
@@ -70,10 +46,10 @@ struct Gameboard: RandomsFor2048 {
         }
         
         return freeIndexes[randomFromZero(to: freeIndexes.count)]
-
+        
     }
     
-    //Check for game over
+    //MARK: CHECK FOR GAME OVER
     func isLost() -> Bool {
         
         var counter = 0
@@ -106,7 +82,7 @@ struct Gameboard: RandomsFor2048 {
         return counter == 0
     }
     
-    //MARK: Shifting tiles
+    //MARK: SHIFTING TILES
     mutating func shiftTiles(_ direction: UISwipeGestureRecognizerDirection) {
         
         switch direction {
@@ -121,14 +97,14 @@ struct Gameboard: RandomsFor2048 {
         default:
             break
         }
-
+        
     }
     
     mutating func shiftUp() {
         var index: Int
-        for r in 1..<dimension {
-            for c in 0..<dimension {
-                index = r * dimension + c
+        for row in 1..<dimension {
+            for column in 0..<dimension {
+                index = row * dimension + column
                 
                 if tiles[index - dimension] == 0 && tiles[index] > 0 {
                     tiles[index - dimension] = tiles[index]
@@ -139,17 +115,17 @@ struct Gameboard: RandomsFor2048 {
                     tiles[index] = 0
                     mergeIndex[index - dimension] = 1
                 }
-      
+                
             }
         }
     }
     
     mutating func shiftDown() {
         var index: Int
-        for r in (0..<dimension - 1).reversed() {
-            for c in 0..<dimension {
+        for row in (0..<dimension - 1).reversed() {
+            for column in 0..<dimension {
                 
-                index = r * dimension + c
+                index = row * dimension + column
                 if tiles[index + dimension] == 0 && tiles[index] > 0 {
                     tiles[index + dimension] = tiles[index]
                     tiles[index] = 0
@@ -166,10 +142,10 @@ struct Gameboard: RandomsFor2048 {
     
     mutating func shiftLeft() {
         var index: Int
-        for c in 1..<dimension {
-            for r in 0..<dimension {
+        for column in 1..<dimension {
+            for row in 0..<dimension {
                 
-                index = r * dimension + c
+                index = row * dimension + column
                 if tiles[index - 1] == 0 && tiles[index] > 0 {
                     tiles[index - 1] = tiles[index]
                     tiles[index] = 0
@@ -188,9 +164,9 @@ struct Gameboard: RandomsFor2048 {
     
     mutating func shiftRight() {
         var index: Int
-        for c in (0..<dimension - 1).reversed() {
-            for r in 0..<dimension {
-                index = r * dimension + c
+        for column in (0..<dimension - 1).reversed() {
+            for row in 0..<dimension {
+                index = row * dimension + column
                 if tiles[index + 1] == 0 && tiles[index] > 0 {
                     tiles[index + 1] = tiles[index]
                     tiles[index] = 0
