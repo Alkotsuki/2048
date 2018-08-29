@@ -20,9 +20,9 @@ class TileView: UIView {
                          256: UIColor.white,
                          512: UIColor.white,
                          1024:UIColor.white,
-                         2048:UIColor.black ]
+                         2048:UIColor.black, ]
     
-    let backColorMap = [ 2:   UIColor.black,
+    let backColorMap = [ 2:   UIColor(red: 0.10, green: 0.10, blue: 0.10, alpha: 1),
                          4:   UIColor.darkGray,
                          8:   UIColor(red: 0.48, green: 0.60, blue: 0.48, alpha: 1),
                          16:  UIColor(red: 0.55, green: 0.82, blue: 0.60, alpha: 1),
@@ -33,10 +33,25 @@ class TileView: UIView {
                          512: UIColor(red: 0.33, green: 0.05, blue: 0.91, alpha: 1),
                          1024:UIColor(red: 0.44, green: 0.63, blue: 1.00, alpha: 1),
                          2048:UIColor.white ]
-    
+  
+//    let backColorMap = [ 2:   UIColor.black,
+//                         4:   UIColor.black,
+//                         8:   UIColor.black,
+//                         16:  UIColor.black,
+//                         32:  UIColor.black,
+//                         64:  UIColor.black,
+//                         128: UIColor.black,
+//                         256: UIColor.black,
+//                         512: UIColor.black,
+//                         1024:UIColor.black,
+//                         2048:UIColor.white ]
 
 
     var numberLabel: UILabel!
+    
+//    let image = UIImage(named: "TileBackground")!
+//    var imageView = UIImageView(image: UIImage(named: "TileBackground"))
+
     
     let pulsator = Pulsator()
     
@@ -49,8 +64,15 @@ class TileView: UIView {
     }
     
     //MARK: - init function
-    init(position: CGPoint, width: CGFloat, value: Int) {
-        numberLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: width))
+    init(position: CGPoint, width: CGFloat, height: CGFloat, value: Int) {
+        
+        
+//        imageView.image = UIImage(named: "TileBackground")
+//        imageView.frame = CGRect(x: 0, y: 0, width: width, height: height)
+//        imageView.alpha = 0.7
+        
+        
+        numberLabel = UILabel(frame: CGRect(x: 0, y: 0, width: width, height: height))
         numberLabel.textColor = textColorMap[value]
         numberLabel.text = "\(value)"
 //        numberLabel.font = UIFont(name:"AvenirNextCondensed-Heavy", size: width * 0.7)
@@ -59,12 +81,20 @@ class TileView: UIView {
         numberLabel.textAlignment = .center
         numberLabel.minimumScaleFactor = 0.4
         numberLabel.adjustsFontSizeToFitWidth = true
-        super.init(frame: CGRect(x: position.x, y: position.y, width: width, height: width))
+        super.init(frame: CGRect(x: position.x, y: position.y, width: width, height: height))
+        
+
+//        addSubview(imageView)
+//        sendSubview(toBack: imageView)
+        
         addSubview(numberLabel)
+//        bringSubview(toFront: numberLabel)
         layer.cornerRadius = 6
         clipsToBounds = true
         self.value = value
         backgroundColor = backColorMap[value]
+        
+
         
         layer.addSublayer(pulsator)
         pulsator.frame = CGRect(x: width/2, y: width/2, width: 0, height: 0)
@@ -72,7 +102,7 @@ class TileView: UIView {
         pulsator.backgroundColor = UIColor.white.cgColor
         pulsator.animationDuration = 0.8
         pulsator.repeatCount = 1
-    
+        
     }
     
     required init?(coder aDecoder: NSCoder) {

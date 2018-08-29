@@ -31,9 +31,9 @@ struct Score {
     static func loadTop100FromFirestore(completion: @escaping ([Score]) -> Void) {
         var scores: [ Score ] = []
         let db = Firestore.firestore()
-        let ref = db.collection("scores")
+//        let ref = db.collection("scores")
         
-        ref.order(by: "score", descending: true).limit(to: 100).getDocuments { (query, error) in
+        db.collection("scores").order(by: "score", descending: true).limit(to: 100).getDocuments { (query, error) in
             
             if let error = error {
                 print("Error downloading data: \(error)")

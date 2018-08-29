@@ -49,7 +49,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8yP-fj-QLl">
-                                            <rect key="frame" x="254.66666666666666" y="9.6666666666666661" width="90.333333333333343" height="25.333333333333336"/>
+                                            <rect key="frame" x="254.66666666666666" y="9.0000000000000018" width="90.333333333333343" height="26.666666666666671"/>
                                             <fontDescription key="fontDescription" type="system" weight="black" pointSize="22"/>
                                             <color key="textColor" red="1" green="0.14836193389999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                             <nil key="highlightedColor"/>
@@ -94,11 +94,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Start" translatesAutoresizingMaskIntoConstraints="NO" id="6uV-2p-kIN">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Start1" translatesAutoresizingMaskIntoConstraints="NO" id="6uV-2p-kIN">
                                 <rect key="frame" x="-37.666666666666657" y="-81.333333333333314" width="450.33333333333326" height="974.66666666666652"/>
                             </imageView>
                             <button contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DkF-4E-I3V">
-                                <rect key="frame" x="113" y="467.33333333333331" width="150" height="40"/>
+                                <rect key="frame" x="112.66666666666669" y="467.33333333333331" width="150" height="40"/>
                                 <color key="backgroundColor" red="1" green="0.14836193389999999" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="40" id="tAK-cu-c6K"/>
@@ -120,7 +120,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="bottom" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="EZ2048" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9CS-zc-QfQ" customClass="GlitchLabel" customModule="_048" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="284" width="375" height="81.333333333333314"/>
+                                <rect key="frame" x="0.0" y="284.33333333333331" width="375" height="81"/>
                                 <fontDescription key="fontDescription" name="Menlo-Regular" family="Menlo" pointSize="55"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -165,16 +165,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Start1" translatesAutoresizingMaskIntoConstraints="NO" id="cPl-TY-b4P" userLabel="Background">
+                                <rect key="frame" x="-37.666666666666657" y="-81.333333333333314" width="450.33333333333326" height="974.66666666666652"/>
+                            </imageView>
                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="25" translatesAutoresizingMaskIntoConstraints="NO" id="Vsi-7c-Vdi">
-                                <rect key="frame" x="37.333333333333343" y="214.99999999999997" width="300.66666666666663" height="83.666666666666657"/>
+                                <rect key="frame" x="37.666666666666657" y="214.66666666666666" width="300" height="83.666666666666657"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gdu-Ji-4AB">
-                                        <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="83.666666666666671"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" minimumScaleFactor="0.5" translatesAutoresizingMaskIntoConstraints="NO" id="gdu-Ji-4AB">
+                                        <rect key="frame" x="0.0" y="0.0" width="83.333333333333329" height="83.666666666666671"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <constraints>
                                             <constraint firstAttribute="width" secondItem="gdu-Ji-4AB" secondAttribute="height" multiplier="1:1" id="RCZ-Sg-hGl"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -184,10 +187,10 @@
                                             <userDefinedRuntimeAttribute type="boolean" keyPath="clipsToBounds" value="YES"/>
                                         </userDefinedRuntimeAttributes>
                                     </label>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6K-rI-Xe6">
-                                        <rect key="frame" x="108.66666666666666" y="0.0" width="83.333333333333343" height="83.666666666666671"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" alpha="0.90000000000000002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Record:" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="b6K-rI-Xe6">
+                                        <rect key="frame" x="108.33333333333334" y="0.0" width="83.333333333333343" height="83.666666666666671"/>
                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="19"/>
+                                        <fontDescription key="fontDescription" type="system" weight="black" pointSize="18"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                         <userDefinedRuntimeAttributes>
@@ -198,11 +201,11 @@
                                         </userDefinedRuntimeAttributes>
                                     </label>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="uUg-UO-AMm" userLabel="Buttons">
-                                        <rect key="frame" x="216.99999999999997" y="0.0" width="83.666666666666657" height="83.666666666666671"/>
+                                        <rect key="frame" x="216.66666666666671" y="0.0" width="83.333333333333343" height="83.666666666666671"/>
                                         <subviews>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3ca-Rx-LVI">
-                                                <rect key="frame" x="0.0" y="0.0" width="83.666666666666671" height="37"/>
-                                                <color key="backgroundColor" red="1" green="0.14836193389999999" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="83.333333333333329" height="37"/>
+                                                <color key="backgroundColor" red="0.79134957901554404" green="0.080658352877466866" blue="0.0" alpha="0.90044564260563376" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Reset">
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 </state>
@@ -218,8 +221,8 @@
                                                 </connections>
                                             </button>
                                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nCy-H7-2fd">
-                                                <rect key="frame" x="0.0" y="47" width="83.666666666666671" height="36.666666666666657"/>
-                                                <color key="backgroundColor" red="1" green="0.14836193389999999" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                                                <rect key="frame" x="0.0" y="47.000000000000028" width="83.333333333333329" height="36.666666666666657"/>
+                                                <color key="backgroundColor" red="0.79134957900000003" green="0.080658352880000006" blue="0.0" alpha="0.90044564260000004" colorSpace="custom" customColorSpace="displayP3"/>
                                                 <state key="normal" title="Add tiles">
                                                     <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 </state>
@@ -238,202 +241,215 @@
                                     </stackView>
                                 </subviews>
                             </stackView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDR-fa-y8t" userLabel="Gameboard">
-                                <rect key="frame" x="18.333333333333343" y="318" width="338.33333333333326" height="338.33333333333326"/>
+                            <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="rDR-fa-y8t" userLabel="Gameboard">
+                                <rect key="frame" x="18.666666666666657" y="318.33333333333326" width="337.66666666666674" height="337.66666666666674"/>
                                 <subviews>
-                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="qhR-r3-H0A">
-                                        <rect key="frame" x="5" y="5" width="328.33333333333331" height="328.33333333333331"/>
+                                    <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="qhR-r3-H0A">
+                                        <rect key="frame" x="6" y="6" width="325.66666666666669" height="325.66666666666669"/>
                                         <subviews>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="b1q-As-0t3">
-                                                <rect key="frame" x="0.0" y="0.0" width="328.33333333333331" height="78.333333333333329"/>
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="b1q-As-0t3">
+                                                <rect key="frame" x="0.0" y="0.0" width="325.66666666666669" height="77"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xr-EY-xeP">
-                                                        <rect key="frame" x="0.0" y="0.0" width="78.333333333333329" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1xr-EY-xeP">
+                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leP-rE-QvF">
-                                                        <rect key="frame" x="83.333333333333343" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="leP-rE-QvF">
+                                                        <rect key="frame" x="83" y="0.0" width="77" height="77"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dL-5m-FKR">
-                                                        <rect key="frame" x="166.66666666666666" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="8dL-5m-FKR">
+                                                        <rect key="frame" x="166" y="0.0" width="76.666666666666686" height="77"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZo-gy-O86">
-                                                        <rect key="frame" x="249.99999999999997" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="HZo-gy-O86">
+                                                        <rect key="frame" x="248.66666666666663" y="0.0" width="77" height="77"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="E4e-nN-xrb">
-                                                <rect key="frame" x="0.0" y="83.333333333333314" width="328.33333333333331" height="78.333333333333314"/>
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="E4e-nN-xrb">
+                                                <rect key="frame" x="0.0" y="83" width="325.66666666666669" height="77"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnZ-iH-8wt">
-                                                        <rect key="frame" x="0.0" y="0.0" width="78.333333333333329" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hnZ-iH-8wt">
+                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6b-cv-17l">
-                                                        <rect key="frame" x="83.333333333333343" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="P6b-cv-17l">
+                                                        <rect key="frame" x="83" y="0.0" width="77" height="77"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4A-Zk-d7J">
-                                                        <rect key="frame" x="166.66666666666666" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="O4A-Zk-d7J">
+                                                        <rect key="frame" x="166" y="0.0" width="76.666666666666686" height="77"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyq-4s-g74">
-                                                        <rect key="frame" x="249.99999999999997" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nyq-4s-g74">
+                                                        <rect key="frame" x="248.66666666666663" y="0.0" width="77" height="77"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="iBs-wG-8zE">
-                                                <rect key="frame" x="0.0" y="166.66666666666669" width="328.33333333333331" height="78.333333333333314"/>
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="iBs-wG-8zE">
+                                                <rect key="frame" x="0.0" y="166" width="325.66666666666669" height="76.666666666666686"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQp-4f-t97">
-                                                        <rect key="frame" x="0.0" y="0.0" width="78.333333333333329" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="dQp-4f-t97">
+                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="76.666666666666671"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEL-yg-FHs">
-                                                        <rect key="frame" x="83.333333333333343" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xKx-ai-f4G">
-                                                        <rect key="frame" x="166.66666666666666" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eaw-l3-73D">
-                                                        <rect key="frame" x="249.99999999999997" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="CEL-yg-FHs">
+                                                        <rect key="frame" x="83" y="0.0" width="77" height="76.666666666666671"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xKx-ai-f4G">
+                                                        <rect key="frame" x="166" y="0.0" width="76.666666666666686" height="76.666666666666671"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Eaw-l3-73D">
+                                                        <rect key="frame" x="248.66666666666663" y="0.0" width="77" height="76.666666666666671"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </stackView>
-                                            <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="aF1-tO-YU6">
-                                                <rect key="frame" x="0.0" y="250.00000000000003" width="328.33333333333331" height="78.333333333333343"/>
+                                            <stackView opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" distribution="fillEqually" spacing="6" translatesAutoresizingMaskIntoConstraints="NO" id="aF1-tO-YU6">
+                                                <rect key="frame" x="0.0" y="248.66666666666669" width="325.66666666666669" height="77"/>
                                                 <subviews>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMx-DK-FTB">
-                                                        <rect key="frame" x="0.0" y="0.0" width="78.333333333333329" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jMx-DK-FTB">
+                                                        <rect key="frame" x="0.0" y="0.0" width="77" height="77"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCm-h2-4ZT">
-                                                        <rect key="frame" x="83.333333333333343" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
-                                                        </userDefinedRuntimeAttributes>
-                                                    </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEg-Yx-tFR">
-                                                        <rect key="frame" x="166.66666666666666" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
-                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                        <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
-                                                            </userDefinedRuntimeAttribute>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
-                                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dp-LN-m8o">
-                                                        <rect key="frame" x="249.99999999999997" y="0.0" width="78.333333333333343" height="78.333333333333329"/>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kCm-h2-4ZT">
+                                                        <rect key="frame" x="83" y="0.0" width="77" height="77"/>
                                                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                         <userDefinedRuntimeAttributes>
-                                                            <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                                                <integer key="value" value="6"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="DEg-Yx-tFR">
+                                                        <rect key="frame" x="166" y="0.0" width="76.666666666666686" height="77"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <userDefinedRuntimeAttributes>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                                <real key="value" value="6"/>
+                                                            </userDefinedRuntimeAttribute>
+                                                        </userDefinedRuntimeAttributes>
+                                                    </view>
+                                                    <view clipsSubviews="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="4dp-LN-m8o">
+                                                        <rect key="frame" x="248.66666666666663" y="0.0" width="77" height="77"/>
+                                                        <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                                        <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
                                                                 <real key="value" value="6"/>
                                                             </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </view>
                                                 </subviews>
+                                                <userDefinedRuntimeAttributes>
+                                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                        <real key="value" value="6"/>
+                                                    </userDefinedRuntimeAttribute>
+                                                </userDefinedRuntimeAttributes>
                                             </stackView>
                                         </subviews>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                                <real key="value" value="6"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" red="0.21701614767158584" green="0.21701614767158584" blue="0.21701614767158584" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <constraints>
                                     <constraint firstAttribute="width" secondItem="rDR-fa-y8t" secondAttribute="height" multiplier="1:1" id="ct3-p7-Rg1"/>
-                                    <constraint firstItem="qhR-r3-H0A" firstAttribute="leading" secondItem="rDR-fa-y8t" secondAttribute="leading" constant="5" id="fQE-do-r12"/>
-                                    <constraint firstItem="qhR-r3-H0A" firstAttribute="top" secondItem="rDR-fa-y8t" secondAttribute="top" constant="5" id="lUb-wW-n9V"/>
-                                    <constraint firstAttribute="trailing" secondItem="qhR-r3-H0A" secondAttribute="trailing" constant="5" id="rXB-oq-Cf9"/>
-                                    <constraint firstAttribute="bottom" secondItem="qhR-r3-H0A" secondAttribute="bottom" constant="5" id="xXQ-Ud-xZK"/>
+                                    <constraint firstItem="qhR-r3-H0A" firstAttribute="leading" secondItem="rDR-fa-y8t" secondAttribute="leading" constant="6" id="fQE-do-r12"/>
+                                    <constraint firstItem="qhR-r3-H0A" firstAttribute="top" secondItem="rDR-fa-y8t" secondAttribute="top" constant="6" id="lUb-wW-n9V"/>
+                                    <constraint firstAttribute="trailing" secondItem="qhR-r3-H0A" secondAttribute="trailing" constant="6" id="rXB-oq-Cf9"/>
+                                    <constraint firstAttribute="bottom" secondItem="qhR-r3-H0A" secondAttribute="bottom" constant="6" id="xXQ-Ud-xZK"/>
                                 </constraints>
                                 <userDefinedRuntimeAttributes>
-                                    <userDefinedRuntimeAttribute type="number" keyPath="layer.cornerRadius">
-                                        <integer key="value" value="6"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="cornerRadius">
+                                        <real key="value" value="6"/>
                                     </userDefinedRuntimeAttribute>
                                 </userDefinedRuntimeAttributes>
                             </view>
@@ -441,12 +457,16 @@
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <gestureRecognizers/>
                         <constraints>
+                            <constraint firstItem="cPl-TY-b4P" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="1.2" id="72S-Uw-yVb"/>
                             <constraint firstItem="Vsi-7c-Vdi" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="PJI-Si-pP9"/>
+                            <constraint firstItem="cPl-TY-b4P" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" id="U3U-rj-5NL"/>
                             <constraint firstItem="Vsi-7c-Vdi" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="WI4-xo-oUk"/>
                             <constraint firstItem="rDR-fa-y8t" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.9" id="YyK-8n-DKL"/>
                             <constraint firstItem="rDR-fa-y8t" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="lJv-8u-LMm"/>
                             <constraint firstItem="rDR-fa-y8t" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" multiplier="1.2" id="oab-B9-z94"/>
                             <constraint firstItem="rDR-fa-y8t" firstAttribute="top" secondItem="Vsi-7c-Vdi" secondAttribute="bottom" constant="20" id="qO3-B2-gQs"/>
+                            <constraint firstItem="cPl-TY-b4P" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="1.2" id="tAG-Tz-Jcg"/>
+                            <constraint firstItem="cPl-TY-b4P" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="vWs-XM-0l1"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <connections>
@@ -471,23 +491,24 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="backgroundView" destination="cPl-TY-b4P" id="nfg-Vz-g06"/>
                         <outlet property="bestRecordLabel" destination="b6K-rI-Xe6" id="JGL-Dg-NYQ"/>
-                        <outlet property="cell0" destination="1xr-EY-xeP" id="DD2-OY-uK0"/>
-                        <outlet property="cell1" destination="leP-rE-QvF" id="c0p-bk-CdQ"/>
-                        <outlet property="cell10" destination="xKx-ai-f4G" id="3KJ-WI-4Va"/>
-                        <outlet property="cell11" destination="Eaw-l3-73D" id="RX6-uu-onQ"/>
-                        <outlet property="cell12" destination="jMx-DK-FTB" id="cgA-PC-Zil"/>
-                        <outlet property="cell13" destination="kCm-h2-4ZT" id="toM-wz-OKz"/>
-                        <outlet property="cell14" destination="DEg-Yx-tFR" id="v1l-dF-Wnm"/>
-                        <outlet property="cell15" destination="4dp-LN-m8o" id="AwP-Yq-BdO"/>
-                        <outlet property="cell2" destination="8dL-5m-FKR" id="JXH-zy-1KP"/>
-                        <outlet property="cell3" destination="HZo-gy-O86" id="2lz-Xg-vU2"/>
-                        <outlet property="cell4" destination="hnZ-iH-8wt" id="2Dk-BT-2zM"/>
-                        <outlet property="cell5" destination="P6b-cv-17l" id="jFW-yC-KrF"/>
-                        <outlet property="cell6" destination="O4A-Zk-d7J" id="Ugy-d1-cs9"/>
-                        <outlet property="cell7" destination="nyq-4s-g74" id="YvV-Mj-j8g"/>
-                        <outlet property="cell8" destination="dQp-4f-t97" id="IIB-vH-a8c"/>
-                        <outlet property="cell9" destination="CEL-yg-FHs" id="JBb-Gz-k3a"/>
+                        <outlet property="cell0" destination="1xr-EY-xeP" id="jYO-tz-mGZ"/>
+                        <outlet property="cell1" destination="leP-rE-QvF" id="Gfz-M4-iEr"/>
+                        <outlet property="cell10" destination="xKx-ai-f4G" id="jjF-QR-Tc3"/>
+                        <outlet property="cell11" destination="Eaw-l3-73D" id="1Vj-XG-SCe"/>
+                        <outlet property="cell12" destination="jMx-DK-FTB" id="U8W-f9-s3Y"/>
+                        <outlet property="cell13" destination="kCm-h2-4ZT" id="9al-dm-FDt"/>
+                        <outlet property="cell14" destination="DEg-Yx-tFR" id="zuC-F7-dia"/>
+                        <outlet property="cell15" destination="4dp-LN-m8o" id="GIc-PD-jgR"/>
+                        <outlet property="cell2" destination="8dL-5m-FKR" id="he6-hA-jSj"/>
+                        <outlet property="cell3" destination="HZo-gy-O86" id="ckZ-zb-Dsu"/>
+                        <outlet property="cell4" destination="hnZ-iH-8wt" id="Kgd-xE-kcW"/>
+                        <outlet property="cell5" destination="P6b-cv-17l" id="GjO-EY-KZN"/>
+                        <outlet property="cell6" destination="O4A-Zk-d7J" id="lfs-3O-bZ7"/>
+                        <outlet property="cell7" destination="nyq-4s-g74" id="peB-Nc-qXc"/>
+                        <outlet property="cell8" destination="dQp-4f-t97" id="9Id-dR-AFG"/>
+                        <outlet property="cell9" destination="CEL-yg-FHs" id="O0q-xc-TPC"/>
                         <outlet property="gameboardView" destination="rDR-fa-y8t" id="7d9-4l-pfw"/>
                         <outlet property="scoreLabel" destination="gdu-Ji-4AB" id="Sja-gI-Wk5"/>
                     </connections>
@@ -515,7 +536,7 @@
                     </connections>
                 </swipeGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="1079.2" y="132.68365817091455"/>
+            <point key="canvasLocation" x="1079.2" y="132.26600985221674"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="OgE-td-K95">
@@ -542,6 +563,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Start" width="526" height="963"/>
+        <image name="Start1" width="526" height="963"/>
     </resources>
 </document>

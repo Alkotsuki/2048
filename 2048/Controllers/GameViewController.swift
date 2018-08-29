@@ -87,14 +87,46 @@ class GameViewController: UIViewController, RandomsFor2048 {
         
         let cell = cells[index]
         let width = cell.frame.width
-        let tileCoords = cell.superview!.convert(cell.frame.origin, to: gameboardView)
-        let tile = TileView(position: tileCoords, width: width, value: value)
+        let height = cell.frame.height
+        
+        //        let tileCoords = cell.superview!.convert(cell.frame.origin, to: gameboardView)
+        let tileCoords = cell.bounds.origin
+        
+        let tile = TileView(position: tileCoords, width: width, height: height, value: value)
         gameboard.tiles[index] = value
         tileValue[index] = value
         tileView[index] = tile
         
-        gameboardView.addSubview(tile)
-        gameboardView.bringSubview(toFront: tile)
+        print("!!!!!!!!!!!!!!!!")
+        print(cell.bounds.origin)
+        print(tileCoords)
+        print(tile.frame.origin)
+        print(width)
+        print(tile.frame.width)
+        print(tile.bounds.width)
+        
+        
+        //        gameboardView.addSubview(tile)
+        //        gameboardView.bringSubview(toFront: tile)
+        cell.addSubview(tile)
+        cell.bringSubview(toFront: tile)
+        
+        
+//        let margins = cell.layoutMarginsGuide
+//        tile.leadingAnchor.constraint(equalTo: margins.leadingAnchor, constant: 0).isActive = true
+//        tile.trailingAnchor.constraint(equalTo: margins.trailingAnchor, constant: 0).isActive = true
+//        tile.topAnchor.constraint(equalTo: margins.topAnchor, constant: 0).isActive = true
+//        tile.bottomAnchor.constraint(equalTo: margins.bottomAnchor, constant: 0).isActive = true
+//        tile.setNeedsLayout()
+//        cell.setNeedsLayout()
+        
+        
+//        tile.translatesAutoresizingMaskIntoConstraints = true
+//        tile.center = CGPoint(x: cell.bounds.midX, y: cell.bounds.midY)
+//        tile.autoresizingMask = [UIViewAutoresizing.flexibleLeftMargin, UIViewAutoresizing.flexibleRightMargin, UIViewAutoresizing.flexibleTopMargin, UIViewAutoresizing.flexibleBottomMargin]
+
+        
+        
         
         animateTile(tile, with: type)
         
@@ -151,11 +183,12 @@ class GameViewController: UIViewController, RandomsFor2048 {
         print("swiped \(direction)")
     }
     
-
+    
     
     //MARK: OUTLETS
     
     @IBOutlet weak var gameboardView: UIView!
+    @IBOutlet weak var backgroundView: UIImageView!
     
     @IBOutlet weak var cell0:  UIView!
     @IBOutlet weak var cell1:  UIView!
@@ -213,16 +246,16 @@ class GameViewController: UIViewController, RandomsFor2048 {
             return
             
         case .new:
-            tile.layer.setAffineTransform(CGAffineTransform(scaleX: 0.1, y: 0.1))
+            tile.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             tile.alpha = 0
-
-            UIView.animate(withDuration: 0.2, delay: 0.3, usingSpringWithDamping: 0.2, initialSpringVelocity: 6, options: .curveEaseInOut, animations: {
+            
+            UIView.animate(withDuration: 0.18, delay: 0.2, animations: {
                 tile.alpha = 1
                 tile.transform = CGAffineTransform.identity
             }, completion: nil)
             
-        case .merge:
             
+        case .merge:
             tile.pulsator.start()
             UIView.animate(withDuration: 0.1, delay: 0, usingSpringWithDamping: 0.9, initialSpringVelocity: 0, options: .curveEaseInOut, animations: {
                 
@@ -326,9 +359,9 @@ class GameViewController: UIViewController, RandomsFor2048 {
         scoreLabel.text = "SCORE: \n\(score)"
         bestRecordLabel.text = "BEST: \n\(record)"
         
-        generateTile()
-        generateTile()
-        
+//        generateTile()
+//        generateTile()
+
         Score.loadTop100FromFirestore { (scores) in
             if scores.count != 0 {
                 self.scores = scores
@@ -337,15 +370,30 @@ class GameViewController: UIViewController, RandomsFor2048 {
             }
         }
         
+        gameboardView.transform = CGAffineTransform(scaleX: 0.2, y: 0.2 )
+        gameboardView.alpha = 0
+        
+        backgroundView.addParallax(amount: -20)
+        
+//        UIView.animate(withDuration: 0.1) {
+//            self.gameboardView.alpha = 1
+//            self.gameboardView.transform = CGAffineTransform.identity
+//        }
+        
+        UIView.animate(withDuration: 0.1, delay: 0.1, options: [], animations: {
+            self.gameboardView.alpha = 1
+            self.gameboardView.transform = CGAffineTransform.identity
+        }) { (_) in
+            self.generateTile()
+            self.generateTile()
+        }
+        
     }
     
     override func viewDidAppear(_ animated: Bool) {
-        //        self.view.layoutIfNeeded()
-        //perform gameboard animation
-        //        UIView.animate(withDuration: 2) {
-        //            self.gameboardView.transform = CGAffineTransform(rotationAngle: CGFloat(Double.pi))
-        //        }
         
+        //perform gameboard animation
+
         
     }
     
