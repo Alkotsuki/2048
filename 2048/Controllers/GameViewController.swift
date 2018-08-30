@@ -280,7 +280,7 @@ class GameViewController: UIViewController, RandomsFor2048 {
             let saveAction = UIAlertAction(title: "Submit", style: .default) { (action) in
                 if let name = alertController.textFields?.first?.text {
                     let newHighScore = Score(name: name, score: self.score)
-                    Score.uploadToFirestore(newHighScore)
+                    DatabaseController.shared.uploadToFirestore(newHighScore)
                     self.scores.append(newHighScore)
                     self.scores = self.scores.sorted(by: { $0.score > $1.score })
                     self.performSegue(withIdentifier: Segues.showTop100, sender: self)
@@ -356,7 +356,7 @@ class GameViewController: UIViewController, RandomsFor2048 {
         personalBestLabel.text = "BEST: \n\(record)"
         
         //Loading Top-100 from Firestore
-        Score.loadTop100FromFirestore { (scores) in
+        DatabaseController.shared.downloadTop100FromFirestore { (scores) in
             if scores.count != 0 {
                 self.scores = scores
             } else {

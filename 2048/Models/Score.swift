@@ -13,46 +13,6 @@ struct Score {
     var name: String
     var score: Int
     
-    //Uploading scores to Firestore
-    static func uploadToFirestore(_ score: Score) {
-        
-        let db  = Firestore.firestore()
-        db.collection("scores").addDocument(data: [
-            "name" : score.name,
-            "score": score.score
-        ]) { (error) in
-            if let error = error {
-                print("Failed to upload data: \(error)")
-            }
-        }
-        
-    }
-    
-    //Getting scores from Firestore
-    static func loadTop100FromFirestore(completion: @escaping ([Score]) -> Void) {
-        
-        var scores: [ Score ] = []
-        let db = Firestore.firestore()        
-        db.collection("scores").order(by: "score", descending: true).limit(to: 100).getDocuments { (query, error) in
-            
-            if let error = error {
-                print("Error downloading data: \(error)")
-            } else {
-                
-                for document in query!.documents {
-                    if let name = document.get("name") as? String,
-                        let score = document.get("score") as? Int {
-                        let newScore = Score(name: name, score: score)
-                        scores.append(newScore)
-                    }
-                }
-                completion(scores)
-                
-            }
-        }
-        
-    }
-    
     //Loading sample scores when Firestore isn't available
     static func loadSampleTop100() -> [Score] {
         let sampleScore1  = Score(name: "Silvia", score: 2892)

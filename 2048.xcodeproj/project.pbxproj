@@ -28,6 +28,7 @@
 		B79799832123025700996CD4 /* Score.swift in Sources */ = {isa = PBXBuildFile; fileRef = B79799822123025700996CD4 /* Score.swift */; };
 		B7D5F2D4212EC0D7006D8C4F /* TextEnabledAlertController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7D5F2D3212EC0D7006D8C4F /* TextEnabledAlertController.swift */; };
 		B7D8969A21315AD700BC277A /* GothaProBla.otf in Resources */ = {isa = PBXBuildFile; fileRef = B7D89699213159C300BC277A /* GothaProBla.otf */; };
+		B7F25EA72138133D00AD74E3 /* DatabaseController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B7F25EA62138133D00AD74E3 /* DatabaseController.swift */; };
 		B7FB617321358B380029BE4E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B7FB617221358B380029BE4E /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
@@ -56,6 +57,7 @@
 		B79799822123025700996CD4 /* Score.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Score.swift; sourceTree = "<group>"; };
 		B7D5F2D3212EC0D7006D8C4F /* TextEnabledAlertController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextEnabledAlertController.swift; sourceTree = "<group>"; };
 		B7D89699213159C300BC277A /* GothaProBla.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = GothaProBla.otf; sourceTree = "<group>"; };
+		B7F25EA62138133D00AD74E3 /* DatabaseController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseController.swift; sourceTree = "<group>"; };
 		B7FB617221358B380029BE4E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DB701BB617176092C6122D8E /* Pods_2048.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_2048.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -176,6 +178,7 @@
 			children = (
 				B735942221230AD20031EB44 /* Gameboard.swift */,
 				B79799822123025700996CD4 /* Score.swift */,
+				B7F25EA62138133D00AD74E3 /* DatabaseController.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -368,6 +371,7 @@
 				B787B00C212F203100C14240 /* Parallax.swift in Sources */,
 				B70676782123233900B8F752 /* RandomsFor2048.swift in Sources */,
 				B761C2412130290D00BAFA58 /* JTMaterialTransition.swift in Sources */,
+				B7F25EA72138133D00AD74E3 /* DatabaseController.swift in Sources */,
 				B78F7B3E2128342E005FBFBF /* GlitchLabel.swift in Sources */,
 				B709286D212970DC00F48126 /* Pulsator.swift in Sources */,
 			);
