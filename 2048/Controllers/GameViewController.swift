@@ -90,7 +90,7 @@ class GameViewController: UIViewController, RandomsFor2048 {
         let cell = cells[index]
         let width = cell.frame.width
         let height = cell.frame.height
-        let tileCoords = cell.bounds.origin
+        let tileCoords = cell.superview!.convert(cell.frame.origin, to: gameboardView)
         
         //Creating new TileView
         let tile = TileView(position: tileCoords, width: width, height: height, value: value)
@@ -99,8 +99,8 @@ class GameViewController: UIViewController, RandomsFor2048 {
         tileView[index] = tile
         
         //Adding created TileView to gameboard
-        cell.addSubview(tile)
-        cell.bringSubview(toFront: tile)
+        gameboardView.addSubview(tile)
+        gameboardView.bringSubview(toFront: tile)
         
         animateTile(tile, with: type)
         
@@ -226,7 +226,7 @@ class GameViewController: UIViewController, RandomsFor2048 {
             tile.transform = CGAffineTransform(scaleX: 0.1, y: 0.1)
             tile.alpha = 0
             
-            UIView.animate(withDuration: 0.18, delay: 0.2, animations: {
+            UIView.animate(withDuration: 0.1, delay: 0.09, animations: {
                 
                 tile.alpha = 1
                 tile.transform = CGAffineTransform.identity
@@ -243,7 +243,7 @@ class GameViewController: UIViewController, RandomsFor2048 {
                            options: .curveEaseInOut,
                            animations: {
                             
-                            let scaleTransform = CGAffineTransform(scaleX: 1.3, y: 1.3)
+                            let scaleTransform = CGAffineTransform(scaleX: 1.2, y: 1.2)
                             tile.transform = scaleTransform
                             
             }) { (_) in
